@@ -1,0 +1,21 @@
+{
+  "name": "laminar-indexer",
+  "version": "0.1.0",
+  "description": "LAMINAR INDEXER",
+  "main": "index.js",
+  "author": "Laminar Developers <hello@laminar.one>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "ts-node ./index.ts"
+  },
+  "dependencies": {
+    "@laminar/api": "beta",
+    "@orml/indexer": "0.2.0-beta.36",
+    "@orml/scanner": "0.2.0-beta.36",
+    "@polkadot/api": "beta",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "ts-node": "^8.6.2"
+  }
+}
