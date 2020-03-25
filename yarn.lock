@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@acala-network/types@0.2.0-beta.24":
+"@acala-network/types@^0.2.0-beta.24":
   version "0.2.0-beta.24"
   resolved "https://registry.yarnpkg.com/@acala-network/types/-/types-0.2.0-beta.24.tgz#a79a97970bd542ab48477c9236e18c66aa0f1bfc"
   integrity sha512-vte3IdVoXBNB7GHfSq3tZ9t3W8enc0Ns6BU2UFfB5MTl/Iasv0mU7eDNQZxCCwtk0blLjA469prSDuEh65KVsA==
@@ -1148,7 +1148,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@laminar/api@0.2.0-beta.35":
+"@laminar/api@^0.2.0-beta.35":
   version "0.2.0-beta.35"
   resolved "https://registry.yarnpkg.com/@laminar/api/-/api-0.2.0-beta.35.tgz#f0f6716dcf71f1ac1587f1c73456b9d35a12cbd0"
   integrity sha512-919GhEbSAuO5/T0D3TEOfF0Ibf6HmLeAw1lXDfEMYGJBHc5x8UnSNU5apl44zgLH9pC6ggNsbeIAcvSDByT0JQ==
@@ -1981,13 +1981,29 @@
     "@polkadot/api" "1.8.1"
     memoizee "^0.4.14"
 
-"@orml/indexer@0.2.0-beta.40":
-  version "0.2.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@orml/indexer/-/indexer-0.2.0-beta.40.tgz#3a8948767a614522ebd43f5541707b1892d5fb44"
-  integrity sha512-r3OuoK9NqGoiZQy6BJ6EmU3LkJTHXGa2vaGLDV2R7qFeYxH/S6HL3prlyhenMHnZ4DFZ+sZc4puGqb2DEEF+PQ==
+"@orml/api@^0.2.0-beta.41":
+  version "0.2.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.41.tgz#44c207795cfa9a997f2f40aaa0adbd4c4d1c2d67"
+  integrity sha512-VoIS8IzWgC6sl/yYMvQ/YD5Nw1lHXebHkb6XJ2XW2FTc2/UUopqLDr2uG7eIyvAiXrCPpC4+gHiKtutkz9DFcQ==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/scanner" "^0.2.0-beta.40"
+    "@orml/util" "^0.2.0-beta.41"
+    "@polkadot/api" "1.8.1"
+
+"@orml/dispatcher@^0.2.0-beta.41":
+  version "0.2.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.41.tgz#9a660359707878faa60298801c697e4d92cb8cfe"
+  integrity sha512-+02vhQXmKzO53p+SJLyhfiYxa5D91QgTcT1SEooZhm9IryO2hnOYFEvqoAmbBrWtIYEeW3Xcw+wh1hurXFj9Jg==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
+"@orml/indexer@^0.2.0-beta.41":
+  version "0.2.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@orml/indexer/-/indexer-0.2.0-beta.41.tgz#117e2f565e87373f7073f23f0af9c29ed9e42757"
+  integrity sha512-x7mQdsk8BALrCOOYh7SZelt2DvknJnpT/tizaqypYuPcejy0vwmCjCnAtqGG8npACFmXrEliUUvGULIE0DTh8g==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@orml/scanner" "^0.2.0-beta.41"
     "@polkadot/api" "1.8.1"
     "@types/sequelize" "^4.28.8"
     pg "^7.18.2"
@@ -1995,10 +2011,10 @@
     sequelize "^5.21.5"
     winston "^3.2.1"
 
-"@orml/scanner@^0.2.0-beta.40":
-  version "0.2.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@orml/scanner/-/scanner-0.2.0-beta.40.tgz#402b3fc9257695733435e2af359dee7d0202b4db"
-  integrity sha512-tX4zt71YFgqIP0u3yWxcLZskrKpqCz3WTDDzxJraXTEwWyp4cDo+CcSr08bnCO6LidqKbZNegbTS8waeJFyruw==
+"@orml/scanner@^0.2.0-beta.41":
+  version "0.2.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@orml/scanner/-/scanner-0.2.0-beta.41.tgz#fce4157ff32585a07a39249060f9e791665083ca"
+  integrity sha512-CmaoNnXWmoeA22/yMY99ikXNHZZMxcpnzn0L7eAHzwJWG9AM2IdqqDOUf6QUkUnDhermgZi8nk+ZAsxcav+jwg==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@polkadot/api" "1.8.1"
@@ -2011,6 +2027,15 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@polkadot/typegen" "1.8.1"
+
+"@orml/util@^0.2.0-beta.41":
+  version "0.2.0-beta.41"
+  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.41.tgz#736abe4bafd8c44aba334037f8e230927e212f17"
+  integrity sha512-vZnwqiOQ1gTRk5JQXZCUl15F5B2MrblQLzdlUy79aMF8sSpGJKwCbu9mHefOHXz67Yb126P1RatGBcZzwfc9Qw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@yarnpkg/lockfile" "^1.1.0"
+    rxjs "^6.5.4"
 
 "@polkadot/api-derive@1.8.1":
   version "1.8.1"
@@ -2899,6 +2924,11 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+"@yarnpkg/lockfile@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/lockfile/-/lockfile-1.1.0.tgz#e77a97fbd345b76d83245edcd17d393b1b41fb31"
+  integrity sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
