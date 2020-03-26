@@ -9,7 +9,9 @@
       "laminar-indexer": ["packages/laminar-indexer/src"],
       "laminar-indexer/*": ["packages/laminar-indexer/src/*"],
       "acala-indexer": ["packages/acala-indexer/src"],
-      "acala-indexer/*": ["packages/acala-indexer/src/*"]
+      "acala-indexer/*": ["packages/acala-indexer/src/*"],
+      "acala-oracle-dispatcher": ["packages/acala-oracle-dispatcher/src"],
+      "acala-oracle-dispatcher/*": ["packages/acala-oracle-dispatcher/src/*"]
     },
     "skipLibCheck": true,
     "typeRoots": ["./node_modules/@polkadot/ts", "./node_modules/@types"]
