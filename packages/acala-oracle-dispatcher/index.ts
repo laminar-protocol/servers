@@ -2,9 +2,10 @@ import dotenv from 'dotenv';
 import { inspect } from 'util';
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
-import ApiManager from '@orml/api/api-manager';
-import { withAccuracy, defaultLogger } from '@orml/util';
+import { ApiManager } from '@orml/api';
+import { toBaseUnit, defaultLogger } from '@orml/util';
 import { AlphaVantage } from '@orml/fetcher';
+import { configureLogger } from '@orml/app-util';
 
 defaultLogger.addMiddleware((payload, next) =>
   next({ ...payload, args: payload.args.map((x) => inspect(x, false, 5, true)) })
@@ -18,7 +19,11 @@ const readEnvConfig = () => {
     wsUrl: process.env.WS_URL as string,
     seed: process.env.SEED as string,
     alphaVantageApiKey: process.env.ALPHA_VANTAGE_API_KEY as string,
-    interval: Number(process.env.INTERVAL || 1000 * 60 * 5) // default to 5 mins
+    slackWebhook: process.env.SLACK_WEBHOOK,
+    interval: Number(process.env.INTERVAL || 1000 * 60 * 5), // default to 5 mins
+    env: process.env.NODE_ENV || 'development',
+    logFilter: process.env.LOG_FILTER,
+    logLevel: process.env.LOG_LEVEL
   };
 
   if (!config.wsUrl) {
@@ -33,44 +38,53 @@ const readEnvConfig = () => {
   return config;
 };
 
+const CURRENCIES = {
+  BTC: 'XBTC'
+};
+
+const SYMBOLS: [keyof typeof CURRENCIES, string][] = [['BTC', 'USD']];
+
 const run = async () => {
+  const config = readEnvConfig();
+  configureLogger({
+    slackWebhook: config.slackWebhook,
+    production: config.env === 'production',
+    filter: config.logFilter,
+    level: config.logLevel
+  });
+
   logger.info('Starting...');
-
-  const envConfig = readEnvConfig();
-
-  const config = {
-    currencies: {
-      BTC: 'XBTC'
-    }
-  };
 
   const api = await ApiManager.create({
     ...options({}),
-    wsEndpoint: envConfig.wsUrl,
-    account: envConfig.seed
+    wsEndpoint: config.wsUrl,
+    account: config.seed
   });
 
-  const alphaVantage = new AlphaVantage(envConfig.alphaVantageApiKey);
+  const alphaVantage = new AlphaVantage(config.alphaVantageApiKey);
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
   const readData = async () => {
-    const prices = await Promise.all(
-      Object.entries(config.currencies).map(async ([symbol, currency]) => {
-        const price = await alphaVantage.getForexPrice(symbol, 'USD');
-        return { currency, price };
-      })
-    );
+    const result = await alphaVantage.getAll(SYMBOLS);
+    const prices = result.map((x, idx) => ({ currency: CURRENCIES[SYMBOLS[idx][0]], price: x }));
     prices.push({ currency: 'DOT', price: '300' });
     onPrice.emit(prices);
+
+    logger.log('readData', prices);
   };
 
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
-    const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, withAccuracy(price)]));
-    await api.signAndSend(tx).inBlock;
+    const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]));
+    const res = await api.signAndSend(tx).inBlock;
+
+    logger.log('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
   };
 
-  builder().addHandler(onInterval(envConfig.interval, readData)).addHandler(onEvent(onPrice, feedData)).build();
+  builder()
+    .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
+    .addHandler(onEvent(onPrice, feedData))
+    .build();
 
   logger.info('Ready');
 };
