@@ -1988,43 +1988,43 @@
     "@polkadot/api" "1.8.1"
     memoizee "^0.4.14"
 
-"@orml/api@^0.2.0-beta.60":
-  version "0.2.0-beta.60"
-  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.60.tgz#a86efbed39e76defc8cf9782e476b9bfafa1e0c8"
-  integrity sha512-+XzJYDwAoSHWJwGdo3wGIqEMRn1/aFEbGbftXkOWFatLcgOaS8++TWTZaaEfM3Z008H6fMH4jmgkdu+/Ry9Lsw==
+"@orml/api@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.62.tgz#1e620091c04ad9aa7413a4be173a33b9fb8215ee"
+  integrity sha512-4oLZhif9fT5z+P+OJ55WjfwhZdQ2WjsZfXMqHXrEteKI1xYJ9W/XNeQX7g/b463oiQX+iv/VrfWAEPUpzuIFlw==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.60"
+    "@orml/util" "^0.2.0-beta.62"
     "@polkadot/api" "1.8.1"
 
-"@orml/app-util@^0.2.0-beta.60":
-  version "0.2.0-beta.60"
-  resolved "https://registry.yarnpkg.com/@orml/app-util/-/app-util-0.2.0-beta.60.tgz#ae87ac180181e2abd432f3dd4f8346e3b6066413"
-  integrity sha512-18GkY4IznPVJMmxtkCmyN8Vf+C1qMN808tkj6UFyhDLwIrsdjriEdQdLt0Idrs7dyzCYCtNtZlfMTmCh6xshJw==
+"@orml/app-util@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@orml/app-util/-/app-util-0.2.0-beta.62.tgz#e8869af87537b5823aa3687868e6640cb77c20ae"
+  integrity sha512-cUz3xoMfNYU2F8keZ6Pq1mPBHNmrGe4zUx8JA8x9cYvr8UW7iqdmEUfpgNWvDldvDv6QDwitEegfKg/IV1GgwA==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.60"
+    "@orml/util" "^0.2.0-beta.62"
     "@polkadot/types" "^1.8.1"
     "@slack/webhook" "^5.0.3"
     big.js "^5.2.2"
     bn.js "^5.1.1"
     rxjs "^6.5.4"
 
-"@orml/dispatcher@^0.2.0-beta.60":
-  version "0.2.0-beta.60"
-  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.60.tgz#ddfdab0d00c9b481f5645e5de02c802845b88768"
-  integrity sha512-GVUXwxPQVbxbDeBYWEYEL09V8CkthcjmzVRlv84c+5ZrerAFibVRtrNkULFW4WgJAaMacV6IBgACFtJk0SKzpg==
+"@orml/dispatcher@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.62.tgz#7c3a6d93557f1b3288ea15d147b64f23d7bc6741"
+  integrity sha512-yfWhL7nlVj7iVvUSdY9cd2KrN+oC4B6lcLLLn22tuPZ6vImnyDqAykKgYpk7I4GjgWW0yau9S9KU8YTi8NKV4Q==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.60"
+    "@orml/util" "^0.2.0-beta.62"
 
-"@orml/fetcher@^0.2.0-beta.60":
-  version "0.2.0-beta.60"
-  resolved "https://registry.yarnpkg.com/@orml/fetcher/-/fetcher-0.2.0-beta.60.tgz#147fb27b73bea73c5f5a18598c01e48ab4871eb1"
-  integrity sha512-p1kRR+EGx6+uhtHaCJE1aAJ4RxkTK66WiWnGX6Bf3WuDP+HPO5hgytZOK7N1fteRAhe3yi2GpStsytRnITUzeg==
+"@orml/fetcher@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@orml/fetcher/-/fetcher-0.2.0-beta.62.tgz#a3ec5676a45dac4ff433164a83fd9e4dc41a2c87"
+  integrity sha512-Uvl6sTzslSCDLtbgSABlbEr0nENd1fH7vJlwhCEShNvgd6/wO++OQF0EkzFWlOrYfe/yRYx3RZMlgvlM1AfTOw==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.60"
+    "@orml/util" "^0.2.0-beta.62"
     axios "^0.19.2"
 
 "@orml/indexer@^0.2.0-beta.61":
@@ -2058,10 +2058,10 @@
     "@babel/runtime" "^7.8.4"
     "@polkadot/typegen" "1.8.1"
 
-"@orml/util@^0.2.0-beta.60":
-  version "0.2.0-beta.60"
-  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.60.tgz#8f64ed4a90d7971cfd9e1f232603011284e7e42c"
-  integrity sha512-wnXirmv3cJf3+0sSQRFLs4qniwp8dpe2pCb8H6IS9YfTAyFY1T3IHEruRGistuQOe8mz0QnIITVbkuPU6vv8dw==
+"@orml/util@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.62.tgz#5d9450a1fb0ddbf3d38a8e4d0837160f3faa83c5"
+  integrity sha512-k0PEj9mF80VCVKabzz91mxVAEJdWkwl2/S4+c6SfZsbLAVkVBWehlZZOQXSw7bYTHsZo28vnTpDcXpFJP651xA==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@types/big.js" "^4.0.5"

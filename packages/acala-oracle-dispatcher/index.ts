@@ -78,7 +78,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     await result.send;
     const res = await api.signAndSend(tx).inBlock;
 
-    logger.log('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
+    logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
   };
 
   builder()
