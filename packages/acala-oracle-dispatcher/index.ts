@@ -10,7 +10,7 @@ import tradeDex from './dex';
 
 const logger = defaultLogger.createLogger('app');
 
-const readEnvConfig = () => {
+const readEnvConfig = (overrideConfig: object) => {
   dotenv.config();
   const config = {
     wsUrl: process.env.WS_URL as string,
@@ -20,7 +20,8 @@ const readEnvConfig = () => {
     interval: Number(process.env.INTERVAL || 1000 * 60 * 5), // default to 5 mins
     env: process.env.NODE_ENV || 'development',
     logFilter: process.env.LOG_FILTER,
-    logLevel: process.env.LOG_LEVEL
+    logLevel: process.env.LOG_LEVEL,
+    ...overrideConfig
   };
 
   if (!config.wsUrl) {
@@ -41,8 +42,8 @@ const CURRENCIES = {
 
 const SYMBOLS: [keyof typeof CURRENCIES, string][] = [['BTC', 'USD']];
 
-const run = async () => {
-  const config = readEnvConfig();
+const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
+  const config = readEnvConfig(overrideConfig);
   configureLogger({
     slackWebhook: config.slackWebhook,
     production: config.env === 'production',
@@ -89,6 +90,9 @@ const run = async () => {
   logger.info('Ready');
 };
 
-run().catch((err) => {
-  console.error(err);
-});
+export default run;
+
+// if called directly
+if (require.main === module) {
+  run();
+}
