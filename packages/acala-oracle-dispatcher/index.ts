@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-import { inspect } from 'util';
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
@@ -7,9 +6,7 @@ import { toBaseUnit, defaultLogger } from '@orml/util';
 import { AlphaVantage } from '@orml/fetcher';
 import { configureLogger } from '@orml/app-util';
 
-defaultLogger.addMiddleware((payload, next) =>
-  next({ ...payload, args: payload.args.map((x) => inspect(x, false, 5, true)) })
-);
+import tradeDex from './dex';
 
 const logger = defaultLogger.createLogger('app');
 
@@ -76,6 +73,8 @@ const run = async () => {
 
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
     const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]));
+    const result = api.signAndSend(tx);
+    await result.send;
     const res = await api.signAndSend(tx).inBlock;
 
     logger.log('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
@@ -84,6 +83,7 @@ const run = async () => {
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
     .addHandler(onEvent(onPrice, feedData))
+    .addHandler(onEvent(onPrice, (data) => tradeDex(api, data)))
     .build();
 
   logger.info('Ready');
