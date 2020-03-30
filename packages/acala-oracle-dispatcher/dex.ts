@@ -33,7 +33,7 @@ const tradeOne = async (api: ApiManager, currency: string, price: number) => {
   const newListingAmount = Math.sqrt(constProduct / price);
   const newBaseAmount = constProduct / newListingAmount;
 
-  logger.debug('Swap starts', {
+  logger.debug('Swap', {
     currency,
     price,
     dexPrice,
@@ -43,44 +43,38 @@ const tradeOne = async (api: ApiManager, currency: string, price: number) => {
     listingAmount
   });
 
-  let sendResult;
-
   if (dexPrice < price) {
     // buy
     const supplyAmount = newBaseAmount - baseAmount;
     const targetAmount = (listingAmount - newListingAmount) * (1 - SLIPPAGE_RATIO);
-    sendResult = api.signAndSend(
-      api.api.tx.dex.swapCurrency(
-        [BASE_CURRENCY_ID, new BigNumber(supplyAmount).toFixed()],
-        [currency, new BigNumber(targetAmount).toFixed()]
-      )
+    return api.api.tx.dex.swapCurrency(
+      [BASE_CURRENCY_ID, new BigNumber(supplyAmount).toFixed()],
+      [currency, new BigNumber(targetAmount).toFixed()]
     );
   } else {
     // sell
     const supplyAmount = newListingAmount - listingAmount;
     const targetAmount = (baseAmount - newBaseAmount) * (1 - SLIPPAGE_RATIO);
-    sendResult = api.signAndSend(
-      api.api.tx.dex.swapCurrency(
-        [currency, new BigNumber(supplyAmount).toFixed()],
-        [BASE_CURRENCY_ID, new BigNumber(targetAmount).toFixed()]
-      )
+    return api.api.tx.dex.swapCurrency(
+      [currency, new BigNumber(supplyAmount).toFixed()],
+      [BASE_CURRENCY_ID, new BigNumber(targetAmount).toFixed()]
     );
   }
-
-  await sendResult.send;
-  const events = await sendResult.inBlock;
-  logger.log('Swap done', {
-    currency,
-    price,
-    dexPrice,
-    txHash: events.txHash,
-    blockHash: events.blockHash
-  });
 };
 
 const tradeDex = async (api: ApiManager, data: Array<{ currency: string; price: string }>) => {
-  for (const { currency, price } of data) {
-    await tradeOne(api, currency, +price);
+  const txs: Array<any> = (
+    await Promise.all(data.map(({ currency, price }) => tradeOne(api, currency, +price)))
+  ).filter((x) => x);
+
+  if (txs.length) {
+    const sendResult = api.signAndSend(txs);
+    await sendResult.send;
+    const events = await sendResult.inBlock;
+    logger.log('Swap done', {
+      txHash: events.txHash,
+      blockHash: events.blockHash
+    });
   }
 };
 
