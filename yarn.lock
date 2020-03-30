@@ -2024,13 +2024,13 @@
     "@orml/util" "^0.2.0-beta.56"
     axios "^0.19.2"
 
-"@orml/indexer@^0.2.0-beta.56":
-  version "0.2.0-beta.56"
-  resolved "https://registry.yarnpkg.com/@orml/indexer/-/indexer-0.2.0-beta.56.tgz#c97cdf4a45a1fdacaddb6cd9829bc5cf1c4bce21"
-  integrity sha512-ZWPEgiQqDf/zLfFyEVVXXaUMbrF0RkPnwDRPvAjJfxvLwKq/NSD0g9GVEj7f9IXQHMHD01Xx/pLTLB1MoqBxsw==
+"@orml/indexer@^0.2.0-beta.59":
+  version "0.2.0-beta.59"
+  resolved "https://registry.yarnpkg.com/@orml/indexer/-/indexer-0.2.0-beta.59.tgz#4ec77adf9cb1b834042a7b79d3f3b7b482a77d67"
+  integrity sha512-ZFfKYxbeKgiPla7LB3yD4JJ1QfwKAE7BbBqUd7jQXcZhHiRZe2rA5XqXZETbMpYFoLq3UDJW7y/6UUizpjsOfA==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/scanner" "^0.2.0-beta.56"
+    "@orml/scanner" "^0.2.0-beta.59"
     "@polkadot/api" "1.8.1"
     "@types/sequelize" "^4.28.8"
     pg "^7.18.2"
@@ -2038,10 +2038,10 @@
     sequelize "^5.21.5"
     winston "^3.2.1"
 
-"@orml/scanner@^0.2.0-beta.56":
-  version "0.2.0-beta.56"
-  resolved "https://registry.yarnpkg.com/@orml/scanner/-/scanner-0.2.0-beta.56.tgz#edb9acdebd029e763ad753e2e462bc5691d3e903"
-  integrity sha512-P20P4MCjk74N+K18ZCUMPgkq+JIkw9Lk7exbciSFhVOA25sGeWWi0aK/32A0983ZK6HITV5OzjPMH2m6QLK5vA==
+"@orml/scanner@^0.2.0-beta.59":
+  version "0.2.0-beta.59"
+  resolved "https://registry.yarnpkg.com/@orml/scanner/-/scanner-0.2.0-beta.59.tgz#fcdb8da0197ef90b57aab051bdd46f40d36c3527"
+  integrity sha512-4wqclGyYjycleQWtlCCbjArTzkG7XNOGHKgIq0Q0+MuzGUKSFlHYVfgO8PrS5WZQjPn3062qaqWnu5knFAIkjw==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@polkadot/api" "1.8.1"
