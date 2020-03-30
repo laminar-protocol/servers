@@ -71,7 +71,7 @@ const tradeDex = async (api: ApiManager, data: Array<{ currency: string; price: 
     const sendResult = api.signAndSend(txs);
     await sendResult.send;
     const events = await sendResult.inBlock;
-    logger.log('Swap done', {
+    logger.info('Swap done', {
       txHash: events.txHash,
       blockHash: events.blockHash
     });
