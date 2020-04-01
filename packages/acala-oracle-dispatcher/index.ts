@@ -64,12 +64,18 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
   const readData = async () => {
-    const result = await alphaVantage.getAll(SYMBOLS);
-    const prices = result.map((x, idx) => ({ currency: CURRENCIES[SYMBOLS[idx][0]], price: x }));
-    prices.push({ currency: 'DOT', price: '300' });
-    onPrice.emit(prices);
+    return alphaVantage
+      .getAll(SYMBOLS)
+      .then((result) => {
+        const prices = result.map((x, idx) => ({ currency: CURRENCIES[SYMBOLS[idx][0]], price: x }));
+        prices.push({ currency: 'DOT', price: '300' });
+        onPrice.emit(prices);
 
-    logger.log('readData', prices);
+        logger.log('readData', prices);
+      })
+      .catch((error) => {
+        logger.info('AlphaVantage read data error', error);
+      });
   };
 
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
