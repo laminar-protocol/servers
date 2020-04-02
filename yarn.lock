@@ -1170,6 +1170,21 @@
     web3-eth-contract "1.2.6"
     web3-utils "1.2.6"
 
+"@laminar/api@^0.2.0-beta.37":
+  version "0.2.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@laminar/api/-/api-0.2.0-beta.37.tgz#7203be7e204c6350e7fbc7e7c7ac8b38a8ee8b70"
+  integrity sha512-n7K4uIUyaU+7zk4wDONwWmt3UKrxQlRqztlMAZjVKMZdHGDxRSzRN9t7fvo/CJNNlrvnCxm7cyAP94DAf5bUwA==
+  dependencies:
+    "@babel/runtime" "^7.8.0"
+    "@laminar/types" "^0.2.0-beta.37"
+    "@orml/api-derive" "^0.2.0-beta.63"
+    "@polkadot/api" "^1.9.0-beta.22"
+    flow-protocol-ethereum "github:laminar-protocol/flow-protocol-ethereum#0.0.2"
+    web3 "1.2.6"
+    web3-core "1.2.6"
+    web3-eth-contract "1.2.6"
+    web3-utils "1.2.6"
+
 "@laminar/types@^0.2.0-beta.35":
   version "0.2.0-beta.35"
   resolved "https://registry.yarnpkg.com/@laminar/types/-/types-0.2.0-beta.35.tgz#48466a813fa5b1bf749068dc540b3836c9db7214"
@@ -1179,6 +1194,16 @@
     "@orml/types" "^0.2.0-beta.39"
     "@polkadot/typegen" "^1.8.1"
     "@polkadot/types" "1.8.1"
+
+"@laminar/types@^0.2.0-beta.37":
+  version "0.2.0-beta.37"
+  resolved "https://registry.yarnpkg.com/@laminar/types/-/types-0.2.0-beta.37.tgz#a8fc96160dee975653fcc156fcc28eaad50f3000"
+  integrity sha512-vBwDFBQd/KNtPwAp62kuzQtLDY1TnB5ZJ7LAdSYdl7D/P0b9yH76zHyUuCMb9//PiZy/H+AqloP0rB1r+Xvy+Q==
+  dependencies:
+    "@babel/runtime" "^7.8.0"
+    "@orml/types" "^0.2.0-beta.63"
+    "@polkadot/typegen" "^1.9.0-beta.22"
+    "@polkadot/types" "^1.9.0-beta.22"
 
 "@lerna/add@3.20.0":
   version "3.20.0"
@@ -1988,6 +2013,14 @@
     "@polkadot/api" "1.8.1"
     memoizee "^0.4.14"
 
+"@orml/api-derive@^0.2.0-beta.63":
+  version "0.2.0-beta.64"
+  resolved "https://registry.yarnpkg.com/@orml/api-derive/-/api-derive-0.2.0-beta.64.tgz#e322ff909b66dbb3aa29f17e9aed1d5c4dd22988"
+  integrity sha512-NELfQK36VvURd3V3hXAqX1p6lOi7uFE9pPyzxrIJP2TuJ0lbb6GT6PvvHwLby2ArGYQwcMnFnCZJcU/G73k4mw==
+  dependencies:
+    "@polkadot/api" "^1.9.0-beta.22"
+    memoizee "^0.4.14"
+
 "@orml/api@^0.2.0-beta.64":
   version "0.2.0-beta.64"
   resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.64.tgz#12a1e9e9a5a3f887c13e5bdab05ceb64f4352ad7"
@@ -2057,6 +2090,14 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@polkadot/typegen" "1.8.1"
+
+"@orml/types@^0.2.0-beta.63":
+  version "0.2.0-beta.64"
+  resolved "https://registry.yarnpkg.com/@orml/types/-/types-0.2.0-beta.64.tgz#83fac4f532a5cbb26bc3ca157060558d687ab7f6"
+  integrity sha512-IAyfyRlesyElUt7oTVWQYbggAqHJmpA5C3Hrbk7oHORpWlKENfF3voBwfSYR8MPzDnumx/lXZfJkhOP73Dx91g==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@polkadot/typegen" "^1.9.0-beta.22"
 
 "@orml/util@^0.2.0-beta.64":
   version "0.2.0-beta.64"
@@ -2222,7 +2263,7 @@
   dependencies:
     "@types/chrome" "^0.0.95"
 
-"@polkadot/typegen@1.8.1", "@polkadot/typegen@^1.8.1", "@polkadot/typegen@^1.9.0-beta.26":
+"@polkadot/typegen@1.8.1", "@polkadot/typegen@^1.8.1", "@polkadot/typegen@^1.9.0-beta.22", "@polkadot/typegen@^1.9.0-beta.26":
   version "1.9.0-beta.27"
   resolved "https://registry.yarnpkg.com/@polkadot/typegen/-/typegen-1.9.0-beta.27.tgz#4c93bad9ae3b575fecbfdc265e1025dd898c5a1c"
   integrity sha512-8qxQz9oeeRrBD4JQsuqAiIGtyxGDB0E5ujo7ZdjUBt7maJQs8TJ6Py5n7vA15d7kupdl9HdzvDpMDVthOY/Lcg==
