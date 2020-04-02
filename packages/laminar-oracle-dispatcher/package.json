@@ -1,0 +1,23 @@
+{
+  "name": "laminar-oracle-dispatcher",
+  "version": "0.1.0",
+  "description": "Laminar oracle dispatcher",
+  "main": "index.js",
+  "author": "Laminar Developers <hello@laminar.one>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "ts-node ./index.ts"
+  },
+  "dependencies": {
+    "@laminar/api": "^0.2.0-beta.37",
+    "@orml/api": "^0.2.0-beta.64",
+    "@orml/app-util": "^0.2.0-beta.64",
+    "@orml/dispatcher": "^0.2.0-beta.64",
+    "@orml/fetcher": "^0.2.0-beta.64",
+    "@orml/util": "^0.2.0-beta.64",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "ts-node": "^8.6.2"
+  }
+}
