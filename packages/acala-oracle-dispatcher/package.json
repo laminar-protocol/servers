@@ -9,12 +9,12 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@acala-network/api": "^0.2.0-beta.24",
-    "@orml/api": "^0.2.0-beta.64",
-    "@orml/app-util": "^0.2.0-beta.64",
-    "@orml/dispatcher": "^0.2.0-beta.64",
-    "@orml/fetcher": "^0.2.0-beta.64",
-    "@orml/util": "^0.2.0-beta.64",
+    "@acala-network/api": "^0.2.0-beta.30",
+    "@orml/api": "^0.2.0-beta.65",
+    "@orml/app-util": "^0.2.0-beta.65",
+    "@orml/dispatcher": "^0.2.0-beta.65",
+    "@orml/fetcher": "^0.2.0-beta.65",
+    "@orml/util": "^0.2.0-beta.65",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
