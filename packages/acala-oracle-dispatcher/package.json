@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@acala-network/api": "^0.2.0-beta.24",
-    "@orml/api": "^0.2.0-beta.64",
-    "@orml/app-util": "^0.2.0-beta.64",
-    "@orml/dispatcher": "^0.2.0-beta.64",
-    "@orml/fetcher": "^0.2.0-beta.64",
-    "@orml/util": "^0.2.0-beta.64",
+    "@orml/api": "^0.2.0-beta.66",
+    "@orml/app-util": "^0.2.0-beta.66",
+    "@orml/dispatcher": "^0.2.0-beta.66",
+    "@orml/fetcher": "^0.2.0-beta.66",
+    "@orml/util": "^0.2.0-beta.66",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {

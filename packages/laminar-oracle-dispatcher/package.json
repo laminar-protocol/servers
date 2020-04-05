@@ -10,14 +10,16 @@
   },
   "dependencies": {
     "@laminar/api": "^0.2.0-beta.37",
-    "@orml/api": "^0.2.0-beta.64",
-    "@orml/app-util": "^0.2.0-beta.64",
-    "@orml/dispatcher": "^0.2.0-beta.64",
-    "@orml/fetcher": "^0.2.0-beta.64",
-    "@orml/util": "^0.2.0-beta.64",
-    "dotenv": "^8.2.0"
+    "@orml/api": "^0.2.0-beta.66",
+    "@orml/app-util": "^0.2.0-beta.66",
+    "@orml/dispatcher": "^0.2.0-beta.66",
+    "@orml/fetcher": "^0.2.0-beta.66",
+    "@orml/util": "^0.2.0-beta.66",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.4",
     "ts-node": "^8.6.2"
   }
 }
