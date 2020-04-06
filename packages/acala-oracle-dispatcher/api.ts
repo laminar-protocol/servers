@@ -1,4 +1,4 @@
-import express, { RequestHandler } from 'express';
+import express from 'express';
 import { defaultLogger, HeartbeatGroup } from '@orml/util';
 
 const logger = defaultLogger.createLogger('api');
@@ -7,8 +7,8 @@ const createServer = (options: { port: number | string; heartbeats: HeartbeatGro
   try {
     const app = express();
 
-    app.get('/health', (req, res) => {
-      if (options.heartbeats.isAlive()) {
+    app.get('/health', async (req, res) => {
+      if (await options.heartbeats.isAlive()) {
         res.send(options.heartbeats.summary());
       } else {
         res.status(503).send(options.heartbeats.summary());
