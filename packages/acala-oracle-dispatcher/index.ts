@@ -3,13 +3,17 @@ import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util';
+import { Logger } from '@orml/util/logger';
 import { AlphaVantage } from '@orml/fetcher';
 import { configureLogger } from '@orml/app-util';
 import createServer from './api';
 
 import tradeDex from './dex';
+import { consoleOutput } from '@orml/util/logger';
 
-const logger = defaultLogger.createLogger('app');
+const logger = new Logger('app');
+logger.setOutput(consoleOutput);
+logger.log('test');
 
 const readEnvConfig = (overrideConfig: object) => {
   dotenv.config();
@@ -49,15 +53,17 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
   const heartbeats = new HeartbeatGroup({ livePeriod: config.interval + 1000, deadPeriod: config.interval });
 
-  configureLogger({
-    slackWebhook: config.slackWebhook,
-    production: config.env === 'production',
-    filter: config.logFilter,
-    level: config.logLevel,
-    heartbeatGroup: heartbeats
-  });
+  // configureLogger({
+  //   slackWebhook: config.slackWebhook,
+  //   production: config.env === 'production',
+  //   filter: config.logFilter,
+  //   level: config.logLevel,
+  //   heartbeatGroup: heartbeats
+  // });
 
   logger.info('Starting...');
+  logger.log('starting');
+  console.log('starting');
 
   const api = await ApiManager.create({
     ...options({}),
