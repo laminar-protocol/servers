@@ -8,11 +8,11 @@ const createServer = (options: { port: number | string; heartbeats: HeartbeatGro
     const app = express();
 
     app.get('/health', async (req, res) => {
-      if (await options.heartbeats.isAlive()) {
-        res.send(options.heartbeats.summary());
-      } else {
-        res.status(503).send(options.heartbeats.summary());
+      const summary = await options.heartbeats.summary();
+      if (!summary.isAlive) {
+        res.status(503);
       }
+      res.send(summary);
     });
 
     app.listen(options.port, () => {
