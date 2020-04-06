@@ -2021,39 +2021,39 @@
     "@polkadot/api" "^1.9.0-beta.22"
     memoizee "^0.4.14"
 
-"@orml/api@^0.2.0-beta.66":
-  version "0.2.0-beta.66"
-  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.66.tgz#b6d2c3307392e96d0a03b78bb6d4ef2e0903e402"
-  integrity sha512-IfK9a+5uGm2VHJag4CTclJZZvEBFekxsvmvkoSOMKR2ZMSx9cDL2xdMPByjjZjtmrEHVq7uxxjTrB5SkCo69Ww==
+"@orml/api@^0.2.0-beta.67":
+  version "0.2.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.67.tgz#3d72324c892ae8497b3fb3a9e7220eb18e85d5ee"
+  integrity sha512-5Scc2sa8PyeT+mNzbRD1KzImVsBJaATWBkBAykSiZpylLL2F2JPe3uCkmNvSwOmEGsrlA9PQbX/+pVVq4VxA3Q==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.66"
+    "@orml/util" "^0.2.0-beta.67"
     "@polkadot/api" "^1.9.0-beta.22"
 
-"@orml/app-util@^0.2.0-beta.66":
-  version "0.2.0-beta.66"
-  resolved "https://registry.yarnpkg.com/@orml/app-util/-/app-util-0.2.0-beta.66.tgz#de3b7ee1a96b76ad5f269e3f0afe475ae1b43acc"
-  integrity sha512-MgNWDMlmyToSwe/hTbGFDAnqmuzBNqvyTMtfKqcIyLn7g5N6Ov8AnthOtTfUWbChwZGAA/TZe2omGhGl7gTTQw==
+"@orml/app-util@^0.2.0-beta.67":
+  version "0.2.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@orml/app-util/-/app-util-0.2.0-beta.67.tgz#92c2b091627a77438c256cbbfa43574827edb9bc"
+  integrity sha512-EtW0Zm/8eB9WwQ5Qt0aj9GNQJcW6vbBxqcWpNN87dj7zr7/qtE7e0DrHhQjwULXWanHap4Vt3hMn4gWuwo1tIg==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.66"
+    "@orml/util" "^0.2.0-beta.67"
     rxjs "^6.5.4"
 
-"@orml/dispatcher@^0.2.0-beta.66":
-  version "0.2.0-beta.66"
-  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.66.tgz#042c5e696296bd6321c1a726db1a33b28685eeb5"
-  integrity sha512-LzITumXA5n5YEH2xWCkL3WH6jZAgw+HDfEAoXwuhL+QIHiKJQObomMs9gUZaKr1Rv9mELj/GA/qzl7hs2B1x9Q==
+"@orml/dispatcher@^0.2.0-beta.67":
+  version "0.2.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.67.tgz#62018d5bd92b492672ecc258f83f1a049fc67aba"
+  integrity sha512-kQO59OnVRpuKrTg01K8usUS9iLVckkBBfwl+gc6V3FRNCCRUPu8xwIyK4ZiQqJwP7C+ObycIKh5ejLr+EqYahA==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.66"
+    "@orml/util" "^0.2.0-beta.67"
 
-"@orml/fetcher@^0.2.0-beta.66":
-  version "0.2.0-beta.66"
-  resolved "https://registry.yarnpkg.com/@orml/fetcher/-/fetcher-0.2.0-beta.66.tgz#d594a34b90f61bba45907db80ded80000b3430db"
-  integrity sha512-5WzpPvwlOtpaQETX5xCDaFbz+/uPNFTEn3adX8TjQCF+xKo+tL7heMtv5TJj8h0OH5XY1l/3XAgMoKqs8L0gsw==
+"@orml/fetcher@^0.2.0-beta.67":
+  version "0.2.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@orml/fetcher/-/fetcher-0.2.0-beta.67.tgz#d5771b4fa0b00b3d6ec070b62e05dfc7a0a4f2ae"
+  integrity sha512-wu3BZg+BiHrVwFy3lRBXOA8cuBRxr5GRPMwUe4rExOubXMlviVs8jDosn0wzW0/3IraueAnqE7yipTWnhUOdNQ==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.66"
+    "@orml/util" "^0.2.0-beta.67"
     axios "^0.19.2"
 
 "@orml/indexer@^0.2.0-beta.61":
@@ -2095,10 +2095,10 @@
     "@babel/runtime" "^7.8.4"
     "@polkadot/typegen" "^1.9.0-beta.22"
 
-"@orml/util@^0.2.0-beta.66":
-  version "0.2.0-beta.66"
-  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.66.tgz#9bd8566b6721a898dd97bbabe9361a1df551b5ae"
-  integrity sha512-1iV/jHq+RF+Qot6785HAIwVTmEmmHel4YhQEszhFz0UCdR2sCRTvtky5c2uuILgCPiKlvFtxGyACfF230g/Jhw==
+"@orml/util@^0.2.0-beta.67":
+  version "0.2.0-beta.67"
+  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.67.tgz#47cfe68b38881a9439303e0cafc20aa134e63876"
+  integrity sha512-6JrhjbujImt3w0VYpNaVgboK82epQ7ElB6VC0Xla6av03Jis67fAFfQ9uLlzMrWcGmxNYG9t+pgihCYBZjdHeg==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@types/big.js" "^4.0.5"
