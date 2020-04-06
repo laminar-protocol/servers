@@ -1,6 +1,6 @@
 import BigNumber from 'big.js';
 import { ApiManager } from '@orml/api';
-import { defaultLogger } from '@orml/util';
+import { defaultLogger, HeartbeatGroup } from '@orml/util';
 
 const logger = defaultLogger.createLogger('dex');
 
@@ -12,7 +12,7 @@ const ARBITRAGE_RATIO = 0.03;
 // expect less target amount to cover exchange fee (0.3%) and other slippage (0.7%)
 const SLIPPAGE_RATIO = 0.01;
 
-const tradeOne = async (api: ApiManager, currency: string, price: number) => {
+const tradeOne = async (api: ApiManager, currency: string, price: number, heartbeat: HeartbeatGroup) => {
   const pool: any = await api.api.query.dex.liquidityPool(currency);
   const [listingAmount, baseAmount]: [number, number] = pool.map((x: any) => +x.toString()); // this is a lossy conversion but it is fine
   if (!listingAmount) {
@@ -24,7 +24,9 @@ const tradeOne = async (api: ApiManager, currency: string, price: number) => {
 
   const gapRatio = Math.abs((price - dexPrice) / price);
   if (gapRatio < ARBITRAGE_RATIO) {
-    logger.debug('Skip, price close', { currency, price, dexPrice });
+    heartbeat.markAlive(currency);
+
+    logger.log('Skip, price close', { currency, price, dexPrice });
     return;
   }
 
@@ -33,7 +35,7 @@ const tradeOne = async (api: ApiManager, currency: string, price: number) => {
   const newListingAmount = Math.sqrt(constProduct / price);
   const newBaseAmount = constProduct / newListingAmount;
 
-  logger.debug('Swap', {
+  logger.log('Swap', {
     currency,
     price,
     dexPrice,
@@ -62,15 +64,31 @@ const tradeOne = async (api: ApiManager, currency: string, price: number) => {
   }
 };
 
-const tradeDex = async (api: ApiManager, data: Array<{ currency: string; price: string }>) => {
-  const txs: Array<any> = (
-    await Promise.all(data.map(({ currency, price }) => tradeOne(api, currency, +price)))
-  ).filter((x) => x);
+const tradeDex = async (
+  api: ApiManager,
+  data: Array<{ currency: string; price: string }>,
+  heartbeat: HeartbeatGroup
+) => {
+  const txs: any[] = [];
+  const currencies: string[] = [];
+
+  for (const { currency, price } of data) {
+    const tx = await tradeOne(api, currency, +price, heartbeat);
+    if (tx) {
+      txs.push(tx);
+      currencies.push(currency);
+    }
+  }
 
   if (txs.length) {
     const sendResult = api.signAndSend(txs);
     await sendResult.send;
     const events = await sendResult.inBlock;
+
+    for (const currency of currencies) {
+      heartbeat.markAlive(currency);
+    }
+
     logger.info('Swap done', {
       txHash: events.txHash,
       blockHash: events.blockHash

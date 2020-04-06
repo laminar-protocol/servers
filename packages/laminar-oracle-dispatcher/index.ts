@@ -2,9 +2,10 @@ import dotenv from 'dotenv';
 import { options } from '@laminar/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
-import { toBaseUnit, defaultLogger } from '@orml/util';
+import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util';
 import { AlphaVantage } from '@orml/fetcher';
 import { configureLogger } from '@orml/app-util';
+import createServer from './api';
 
 const logger = defaultLogger.createLogger('app');
 
@@ -19,6 +20,7 @@ const readEnvConfig = (overrideConfig: object) => {
     env: process.env.NODE_ENV || 'development',
     logFilter: process.env.LOG_FILTER,
     logLevel: process.env.LOG_LEVEL,
+    port: process.env.PORT || 3000,
     ...overrideConfig
   };
 
@@ -50,11 +52,15 @@ const SYMBOLS: [keyof typeof CURRENCIES, string][] = [
 
 const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
   const config = readEnvConfig(overrideConfig);
+
+  const heartbeats = new HeartbeatGroup({ livePeriod: config.interval + 1000, deadPeriod: config.interval });
+
   configureLogger({
     slackWebhook: config.slackWebhook,
     production: config.env === 'production',
     filter: config.logFilter,
-    level: config.logLevel
+    level: config.logLevel,
+    heartbeatGroup: heartbeats
   });
 
   logger.info('Starting...');
@@ -69,6 +75,9 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
+  const readDataHeartbeat = new Heartbeat(config.interval * 4, 0);
+  heartbeats.addHeartbeat('readData', readDataHeartbeat);
+
   const readData = async () => {
     return alphaVantage
       .getAll(SYMBOLS)
@@ -77,6 +86,8 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
         prices.push({ currency: 'AUSD', price: '1' });
         onPrice.emit(prices);
 
+        readDataHeartbeat.markAlive();
+
         logger.log('readData', prices);
       })
       .catch((error) => {
@@ -84,11 +95,16 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       });
   };
 
+  const feedDataHeartbeat = new Heartbeat(config.interval * 4, 0);
+  heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
+
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
     const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]));
     const result = api.signAndSend(tx);
     await result.send;
     const res = await api.signAndSend(tx).inBlock;
+
+    feedDataHeartbeat.markAlive();
 
     logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
   };
@@ -97,6 +113,10 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
     .addHandler(onEvent(onPrice, feedData))
     .build();
+
+  // API server
+
+  createServer({ port: config.port, heartbeats });
 
   logger.info('Ready');
 };
