@@ -9,8 +9,8 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@laminar/api": "^0.2.0-beta.35",
-    "@orml/indexer": "^0.2.0-beta.61",
+    "@laminar/api": "^0.2.0-beta.40",
+    "@orml/indexer": "^0.2.0-beta.65",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {

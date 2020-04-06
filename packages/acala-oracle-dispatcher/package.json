@@ -9,7 +9,7 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@acala-network/api": "^0.2.0-beta.24",
+    "@acala-network/api": "^0.2.0-beta.30",
     "@orml/api": "^0.2.0-beta.67",
     "@orml/app-util": "^0.2.0-beta.67",
     "@orml/dispatcher": "^0.2.0-beta.67",
