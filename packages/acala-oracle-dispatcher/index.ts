@@ -103,10 +103,13 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
   };
 
+  const tradeDexHeartbeat = new HeartbeatGroup({ livePeriod: config.interval * 4 });
+  heartbeats.addHeartbeat('tradeDex', () => tradeDexHeartbeat.summary());
+
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
     .addHandler(onEvent(onPrice, feedData))
-    .addHandler(onEvent(onPrice, (data) => tradeDex(api, data)))
+    .addHandler(onEvent(onPrice, (data) => tradeDex(api, data, tradeDexHeartbeat)))
     .build();
 
   // API server
