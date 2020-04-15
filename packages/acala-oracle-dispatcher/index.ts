@@ -3,9 +3,9 @@ import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util';
-import { AlphaVantage } from '@orml/fetcher';
 import { configureLogger } from '@orml/app-util';
 import createServer from './api';
+import PriceFetcher from './PriceFetcher';
 
 import tradeDex from './dex';
 
@@ -65,19 +65,18 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     account: config.seed
   });
 
-  const alphaVantage = new AlphaVantage(config.alphaVantageApiKey);
+  let priceFetcher = new PriceFetcher();
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
   const readDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('readData', readDataHeartbeat);
 
-  const readData = async () => {
-    return alphaVantage
-      .getAll(SYMBOLS)
-      .then((result) => {
-        const prices = result.map((x, idx) => ({ currency: CURRENCIES[SYMBOLS[idx][0]], price: x }));
-        prices.push({ currency: 'DOT', price: '300' });
+  const readData = () => {
+    priceFetcher
+      .fetchPrices()
+      .then((prices) => [...prices, { currency: 'DOT', price: '300' }])
+      .then((prices) => {
         onPrice.emit(prices);
 
         readDataHeartbeat.markAlive();
@@ -85,7 +84,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
         logger.log('readData', prices);
       })
       .catch((error) => {
-        logger.info('AlphaVantage read data error', error);
+        logger.info('getPrices error', error);
       });
   };
 
