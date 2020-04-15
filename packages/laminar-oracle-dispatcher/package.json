@@ -9,12 +9,12 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@laminar/api": "^0.2.0-beta.37",
-    "@orml/api": "^0.2.0-beta.68",
-    "@orml/app-util": "^0.2.0-beta.68",
-    "@orml/dispatcher": "^0.2.0-beta.68",
-    "@orml/fetcher": "^0.2.0-beta.68",
-    "@orml/util": "^0.2.0-beta.68",
+    "@laminar/api": "^0.2.0-beta.40",
+    "@orml/api": "^0.2.0-beta.75",
+    "@orml/app-util": "^0.2.0-beta.75",
+    "@orml/dispatcher": "^0.2.0-beta.75",
+    "@orml/fetcher": "^0.2.0-beta.75",
+    "@orml/util": "^0.2.0-beta.75",
     "@types/express": "^4.17.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
