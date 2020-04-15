@@ -1,5 +1,4 @@
 import { AlphaVantage, FetcherInterface } from '@orml/fetcher';
-import config from './config';
 
 export default class AlphaVantageFetcher implements FetcherInterface {
   private readonly alphaVantage: AlphaVantage;
