@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
@@ -6,23 +5,15 @@ import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util
 import { configureLogger } from '@orml/app-util';
 import createServer from './api';
 import PriceFetcher from './PriceFetcher';
+import defaultConfig from './config';
 
 import tradeDex from './dex';
 
 const logger = defaultLogger.createLogger('app');
 
 const readEnvConfig = (overrideConfig: object) => {
-  dotenv.config();
   const config = {
-    wsUrl: process.env.WS_URL as string,
-    seed: process.env.SEED as string,
-    alphaVantageApiKey: process.env.ALPHA_VANTAGE_API_KEY as string,
-    slackWebhook: process.env.SLACK_WEBHOOK,
-    interval: Number(process.env.INTERVAL || 1000 * 60 * 5), // default to 5 mins
-    env: process.env.NODE_ENV || 'development',
-    logFilter: process.env.LOG_FILTER,
-    logLevel: process.env.LOG_LEVEL,
-    port: process.env.PORT || 3000,
+    ...defaultConfig,
     ...overrideConfig
   };
 
