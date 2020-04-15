@@ -1174,7 +1174,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@laminar/api@^0.2.0-beta.37", "@laminar/api@^0.2.0-beta.40":
+"@laminar/api@^0.2.0-beta.40":
   version "0.2.0-beta.40"
   resolved "https://registry.yarnpkg.com/@laminar/api/-/api-0.2.0-beta.40.tgz#e75f9b4de9833973781efe45643b8cc53f0af90e"
   integrity sha512-ja7+l0MVzlpNcgmzP5mNJCbwgMvMvUN6m0o8c4TfPMkVQSxZkP10vZgaWQcG6cG6M3/6TZzh5cfYZMu/CKpFWA==
@@ -2015,15 +2015,6 @@
     "@polkadot/api" "^1.9.0-beta.22"
     memoizee "^0.4.14"
 
-"@orml/api@^0.2.0-beta.68":
-  version "0.2.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.69.tgz#0d5469cb61484001f73c89944db5079a361c7e20"
-  integrity sha512-sqM+GQedNnXUm0VzfKdU9a4xLF/v1UT2QmEBlMu58AoESADhynSZb7Bpb9ViLk2WzafYPS11x+z6GklBvve6uQ==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.69"
-    "@polkadot/api" "^1.9.0-beta.22"
-
 "@orml/api@^0.2.0-beta.75":
   version "0.2.0-beta.75"
   resolved "https://registry.yarnpkg.com/@orml/api/-/api-0.2.0-beta.75.tgz#c0d7098bab0c877fcbdd0ad2db8e51344b8fdf90"
@@ -2032,15 +2023,6 @@
     "@babel/runtime" "^7.8.4"
     "@orml/util" "^0.2.0-beta.75"
     "@polkadot/api" "^1.9.0-beta.22"
-
-"@orml/app-util@^0.2.0-beta.68":
-  version "0.2.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@orml/app-util/-/app-util-0.2.0-beta.69.tgz#2ece8e620c08f12f1d6698a19ff2c9df204d2698"
-  integrity sha512-d6dKnLKGjWmOjhwM5nh/Ss9PijWbrzG54Nd6MU7vnGNGKLXBTjc5/5HQ/vvXYccosZf0P8MiPQtR5HNTeqwvLw==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.69"
-    rxjs "^6.5.4"
 
 "@orml/app-util@^0.2.0-beta.75":
   version "0.2.0-beta.75"
@@ -2051,14 +2033,6 @@
     "@orml/util" "^0.2.0-beta.75"
     rxjs "^6.5.4"
 
-"@orml/dispatcher@^0.2.0-beta.68":
-  version "0.2.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.69.tgz#1345558718ca20b2aafb0fffc8219962904b644d"
-  integrity sha512-M9DWNJtO9rbghuOVJVyVD7wWtGRHqd8X3ddx1+0fo+hKopJl4Qwv3foeqPmwUUXKCdghRu/KTKwzxpM2lqM7tg==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.69"
-
 "@orml/dispatcher@^0.2.0-beta.75":
   version "0.2.0-beta.75"
   resolved "https://registry.yarnpkg.com/@orml/dispatcher/-/dispatcher-0.2.0-beta.75.tgz#cb047fe495a69f9168a15758805823bfcef30581"
@@ -2066,15 +2040,6 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@orml/util" "^0.2.0-beta.75"
-
-"@orml/fetcher@^0.2.0-beta.68":
-  version "0.2.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@orml/fetcher/-/fetcher-0.2.0-beta.69.tgz#263232c53c7aae443f44779768863509ae47ab57"
-  integrity sha512-VbdkCxbF8QXzIRfK4WtaWZZ3SfBw3rnKO6qzmnGgUfoNwCkouWfFKKbT+QNtY1M2s0qW6E/Ephw4Oj1OM5T7nA==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@orml/util" "^0.2.0-beta.69"
-    axios "^0.19.2"
 
 "@orml/fetcher@^0.2.0-beta.75":
   version "0.2.0-beta.75"
@@ -2124,16 +2089,6 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@polkadot/typegen" "^1.9.0-beta.22"
-
-"@orml/util@^0.2.0-beta.68", "@orml/util@^0.2.0-beta.69":
-  version "0.2.0-beta.69"
-  resolved "https://registry.yarnpkg.com/@orml/util/-/util-0.2.0-beta.69.tgz#e18ff99cd4ace8842e043b7ef6b2d0b350f8fef6"
-  integrity sha512-4iFKTRRJNxzpEDx19i1xxW9fIvJft1h7bH+Hpljubs3SNw1IACbysJEnHwQ6WP7nwjXWrvGpertSutGbQ6uPMA==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@types/big.js" "^4.0.5"
-    "@yarnpkg/lockfile" "^1.1.0"
-    big.js "^5.2.2"
 
 "@orml/util@^0.2.0-beta.75":
   version "0.2.0-beta.75"

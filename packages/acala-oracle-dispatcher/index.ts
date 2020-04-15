@@ -11,23 +11,10 @@ import tradeDex from './dex';
 
 const logger = defaultLogger.createLogger('app');
 
-const readEnvConfig = (overrideConfig: object) => {
-  const config = {
-    ...defaultConfig,
-    ...overrideConfig
-  };
-
-  if (!config.wsUrl) {
-    throw new Error('Missing WS_URL');
-  }
-  if (!config.seed) {
-    throw new Error('Missing SEED');
-  }
-  if (!config.alphaVantageApiKey) {
-    throw new Error('Missing ALPHA_VANTAGE_API_KEY');
-  }
-  return config;
-};
+const readEnvConfig = (overrideConfig: object) => ({
+  ...defaultConfig,
+  ...overrideConfig
+});
 
 const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
   const config = readEnvConfig(overrideConfig);
