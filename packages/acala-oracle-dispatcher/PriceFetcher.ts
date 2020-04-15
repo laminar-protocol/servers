@@ -6,6 +6,19 @@ const CURRENCIES: { [key: string]: string } = {
   ETH: 'ETH'
 };
 
+const createFetcher = (exchange: string): FetcherInterface => {
+  if (exchange === 'CryptoCompare') {
+    return new CryptoCompareFetcher('CCCAGG', config.cryptoCompareApiKey);
+  }
+
+  if (exchange.startsWith('CCXT')) {
+    const [, exchangeName] = exchange.split(':');
+    return new CCXTFetcher(exchangeName);
+  }
+
+  throw Error('Unknown exchange');
+};
+
 export default class PriceFetcher {
   private readonly fetchers: { [key: string]: FetcherInterface };
   private readonly symbols: string[];
@@ -15,9 +28,8 @@ export default class PriceFetcher {
 
     this.fetchers = this.symbols
       .map((symbol) => {
-        const ccxtFetchers = config.exchanges[symbol].map((exchange) => new CCXTFetcher(exchange));
-        const CCCAGG = new CryptoCompareFetcher('CCCAGG', config.cryptoCompareApiKey);
-        return { [symbol]: new CombinedFetcher([...ccxtFetchers, CCCAGG]) };
+        const fetchers = config.exchanges[symbol].map((exchange) => createFetcher(exchange));
+        return { [symbol]: new CombinedFetcher(fetchers) };
       })
       .reduce((acc, x) => {
         const key = Object.keys(x)[0];
