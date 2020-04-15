@@ -15,14 +15,9 @@ export default class PriceFetcher {
 
     this.fetchers = this.symbols
       .map((symbol) => {
-        const fetchers = config.exchanges[symbol]
-          .map((exchange) => [
-            new CCXTFetcher(exchange),
-            new CryptoCompareFetcher(exchange, config.apiKeyCryptoCompare)
-          ])
-          .reduce((acc, x) => acc.concat(x));
-
-        return { [symbol]: new CombinedFetcher(fetchers) };
+        const ccxtFetchers = config.exchanges[symbol].map((exchange) => new CCXTFetcher(exchange));
+        const CCCAGG = new CryptoCompareFetcher('CCCAGG', config.cryptoCompareApiKey);
+        return { [symbol]: new CombinedFetcher([...ccxtFetchers, CCCAGG]) };
       })
       .reduce((acc, x) => {
         const key = Object.keys(x)[0];

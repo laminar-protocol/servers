@@ -4,9 +4,9 @@ dotenv.config();
 
 const config = () => {
   // parse api_keys
-  const apiKeyCryptoCompare = process.env.API_KEY_CryptoCompare;
-  if (!apiKeyCryptoCompare) {
-    throw new Error('Missing API_KEY_CryptoCompare');
+  const cryptoCompareApiKey = process.env.CRYPTO_COMPARE_API_KEY;
+  if (!cryptoCompareApiKey) {
+    throw new Error('Missing CRYPTO_COMPARE_API_KEY');
   }
 
   // parse symbols
@@ -42,7 +42,7 @@ const config = () => {
     logFilter: process.env.LOG_FILTER,
     logLevel: process.env.LOG_LEVEL,
     port: process.env.PORT || 3000,
-    apiKeyCryptoCompare,
+    cryptoCompareApiKey,
     symbols,
     exchanges
   };
