@@ -1,28 +1,19 @@
-import dotenv from 'dotenv';
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util';
-import { AlphaVantage } from '@orml/fetcher';
 import { configureLogger } from '@orml/app-util';
 import createServer from './api';
+import PriceFetcher from './PriceFetcher';
+import defaultConfig from './config';
 
 import tradeDex from './dex';
 
 const logger = defaultLogger.createLogger('app');
 
 const readEnvConfig = (overrideConfig: object) => {
-  dotenv.config();
   const config = {
-    wsUrl: process.env.WS_URL as string,
-    seed: process.env.SEED as string,
-    alphaVantageApiKey: process.env.ALPHA_VANTAGE_API_KEY as string,
-    slackWebhook: process.env.SLACK_WEBHOOK,
-    interval: Number(process.env.INTERVAL || 1000 * 60 * 5), // default to 5 mins
-    env: process.env.NODE_ENV || 'development',
-    logFilter: process.env.LOG_FILTER,
-    logLevel: process.env.LOG_LEVEL,
-    port: process.env.PORT || 3000,
+    ...defaultConfig,
     ...overrideConfig
   };
 
@@ -37,12 +28,6 @@ const readEnvConfig = (overrideConfig: object) => {
   }
   return config;
 };
-
-const CURRENCIES = {
-  BTC: 'XBTC'
-};
-
-const SYMBOLS: [keyof typeof CURRENCIES, string][] = [['BTC', 'USD']];
 
 const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
   const config = readEnvConfig(overrideConfig);
@@ -65,19 +50,18 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     account: config.seed
   });
 
-  const alphaVantage = new AlphaVantage(config.alphaVantageApiKey);
+  const priceFetcher = new PriceFetcher();
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
   const readDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('readData', readDataHeartbeat);
 
-  const readData = async () => {
-    return alphaVantage
-      .getAll(SYMBOLS)
-      .then((result) => {
-        const prices = result.map((x, idx) => ({ currency: CURRENCIES[SYMBOLS[idx][0]], price: x }));
-        prices.push({ currency: 'DOT', price: '300' });
+  const readData = () => {
+    priceFetcher
+      .fetchPrices()
+      .then((prices) => [...prices, { currency: 'DOT', price: '300' }])
+      .then((prices) => {
         onPrice.emit(prices);
 
         readDataHeartbeat.markAlive();
@@ -85,7 +69,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
         logger.log('readData', prices);
       })
       .catch((error) => {
-        logger.info('AlphaVantage read data error', error);
+        logger.info('getPrices error', error);
       });
   };
 
