@@ -29,12 +29,6 @@ const readEnvConfig = (overrideConfig: object) => {
   return config;
 };
 
-const CURRENCIES = {
-  BTC: 'XBTC'
-};
-
-const SYMBOLS: [keyof typeof CURRENCIES, string][] = [['BTC', 'USD']];
-
 const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
   const config = readEnvConfig(overrideConfig);
 
@@ -56,7 +50,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     account: config.seed
   });
 
-  let priceFetcher = new PriceFetcher();
+  const priceFetcher = new PriceFetcher();
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
 
