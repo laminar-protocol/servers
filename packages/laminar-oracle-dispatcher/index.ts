@@ -69,7 +69,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const feedDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
-  const feedData = async (data: Array<{ currency: string; price: string }>) => {
+  const feedData = async (data: Array<{ currency: string; price: string }>, randomData = false) => {
     const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]));
     const result = api.signAndSend(tx);
     await result.send;
@@ -77,7 +77,9 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
     feedDataHeartbeat.markAlive();
 
-    logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
+    if (!randomData) {
+      logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
+    }
   };
 
   const feedRandomData = async () => {
@@ -86,7 +88,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       const price = d.price;
       return { ...d, price: fromBaseUnit(toBaseUnit(price).mul(1 + randomVal)).toFixed(10) };
     });
-    await feedData(data);
+    await feedData(data, true);
   };
 
   builder()
