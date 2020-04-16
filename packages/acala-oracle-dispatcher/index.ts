@@ -37,6 +37,11 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     account: config.seed
   });
 
+  logger.log('API details', {
+    defaultAccount: api.defaultAccount?.address,
+    endpoint: config.wsUrl
+  });
+
   const priceFetcher = new PriceFetcher();
 
   const onPrice = createEvent<Array<{ currency: string; price: string }>>('onPrice');
