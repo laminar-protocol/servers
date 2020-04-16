@@ -37,7 +37,7 @@ export default class PriceFetcher {
     this.fetchers = this.symbols
       .map((symbol) => {
         const fetchers = config.exchanges[symbol].map((exchange) => createFetcher(exchange));
-        return { [symbol]: new CombinedFetcher(fetchers) };
+        return { [symbol]: new CombinedFetcher(fetchers, 2) };
       })
       .reduce((acc, x) => {
         const key = Object.keys(x)[0];
@@ -49,13 +49,8 @@ export default class PriceFetcher {
     return Promise.all(
       this.symbols.map((symbol) =>
         this.fetchers[symbol].getPrice(symbol).then((price) => {
-          if (symbol === 'USD/JPY') {
-            const [, quote] = symbol.split('/');
-            return { currency: CURRENCIES[quote] || quote, price: bn(1).div(bn(price)).toString() };
-          } else {
-            const [base] = symbol.split('/');
-            return { currency: CURRENCIES[base] || base, price };
-          }
+          const [base] = symbol.split('/');
+          return { currency: CURRENCIES[base] || base, price };
         })
       )
     );
