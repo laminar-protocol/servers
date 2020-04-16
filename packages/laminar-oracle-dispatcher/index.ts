@@ -1,7 +1,7 @@
 import { options } from '@laminar/api';
 import { builder, onInterval, createEvent, onEvent } from '@orml/dispatcher';
 import { ApiManager } from '@orml/api';
-import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@orml/util';
+import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat, fromBaseUnit } from '@orml/util';
 import { configureLogger } from '@orml/app-util';
 import createServer from './api';
 import defaultConfig from './config';
@@ -47,11 +47,15 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const readDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('readData', readDataHeartbeat);
 
+  let prevData: Array<{ currency: string; price: string }>;
+
   const readData = async () => {
     return priceFetcher
       .fetchPrices()
       .then((prices) => {
         onPrice.emit(prices);
+
+        prevData = prices;
 
         readDataHeartbeat.markAlive();
 
@@ -76,9 +80,19 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
   };
 
+  const feedRandomData = async () => {
+    const data = prevData.map((d) => {
+      const randomVal = (Math.random() - 0.5) * 0.001; // +- 0.05%
+      const price = d.price;
+      return { ...d, price: fromBaseUnit(toBaseUnit(price).mul(1 + randomVal)).toFixed(10) };
+    });
+    await feedData(data);
+  };
+
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
     .addHandler(onEvent(onPrice, feedData))
+    .addHandler(onInterval({ interval: 8000 }, feedRandomData))
     .build();
 
   // API server
