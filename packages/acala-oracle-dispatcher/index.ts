@@ -19,7 +19,7 @@ const readEnvConfig = (overrideConfig: object) => ({
 const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {}) => {
   const config = readEnvConfig(overrideConfig);
 
-  const heartbeats = new HeartbeatGroup({ livePeriod: config.interval + 1000, deadPeriod: config.interval });
+  const heartbeats = new HeartbeatGroup({ deadPeriod: config.interval });
 
   configureLogger({
     slackWebhook: config.slackWebhook,
