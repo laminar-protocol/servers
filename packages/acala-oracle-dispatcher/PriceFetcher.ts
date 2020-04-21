@@ -29,7 +29,7 @@ export default class PriceFetcher {
     this.fetchers = this.symbols
       .map((symbol) => {
         const fetchers = config.exchanges[symbol].map((exchange) => createFetcher(exchange));
-        return { [symbol]: new CombinedFetcher(fetchers) };
+        return { [symbol]: new CombinedFetcher(fetchers, 2) };
       })
       .reduce((acc, x) => {
         const key = Object.keys(x)[0];
