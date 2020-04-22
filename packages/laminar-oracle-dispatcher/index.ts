@@ -47,7 +47,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const readDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('readData', readDataHeartbeat);
 
-  let prevData: Array<{ currency: string; price: string }>;
+  let prevData: Array<{ currency: string; price: string }> = [];
 
   const readData = async () => {
     return priceFetcher
