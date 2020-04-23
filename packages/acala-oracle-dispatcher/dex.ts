@@ -1,6 +1,6 @@
 import BigNumber from 'big.js';
-import { ApiManager } from '@orml/api';
-import { defaultLogger, HeartbeatGroup } from '@orml/util';
+import { ApiManager } from '@open-web3/api';
+import { defaultLogger, HeartbeatGroup } from '@open-web3/util';
 
 const logger = defaultLogger.createLogger('dex');
 
