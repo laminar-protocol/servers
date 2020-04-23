@@ -1,4 +1,4 @@
-import { AlphaVantage, FetcherInterface } from '@orml/fetcher';
+import { AlphaVantage, FetcherInterface } from '@open-web3/fetcher';
 
 export default class AlphaVantageFetcher implements FetcherInterface {
   private readonly alphaVantage: AlphaVantage;

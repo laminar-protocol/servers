@@ -1,5 +1,5 @@
 import express from 'express';
-import { defaultLogger, HeartbeatGroup } from '@orml/util';
+import { defaultLogger, HeartbeatGroup } from '@open-web3/util';
 
 const logger = defaultLogger.createLogger('api');
 

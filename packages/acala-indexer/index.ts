@@ -1,4 +1,4 @@
-import Indexer from '@orml/indexer';
+import Indexer from '@open-web3/indexer';
 import dotenv from 'dotenv';
 import { types as acalaTypes } from '@acala-network/types';
 

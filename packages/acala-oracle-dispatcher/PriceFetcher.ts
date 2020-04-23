@@ -1,4 +1,4 @@
-import { CombinedFetcher, CCXTFetcher, CryptoCompareFetcher, FetcherInterface } from '@orml/fetcher';
+import { CombinedFetcher, CCXTFetcher, CryptoCompareFetcher, FetcherInterface } from '@open-web3/fetcher';
 import config from './config';
 
 const CURRENCIES: { [key: string]: string } = {
