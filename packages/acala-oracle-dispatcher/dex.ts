@@ -50,16 +50,20 @@ const tradeOne = async (api: ApiManager, currency: string, price: number, heartb
     const supplyAmount = newBaseAmount - baseAmount;
     const targetAmount = (listingAmount - newListingAmount) * (1 - SLIPPAGE_RATIO);
     return api.api.tx.dex.swapCurrency(
-      [BASE_CURRENCY_ID, new BigNumber(supplyAmount).toFixed()],
-      [currency, new BigNumber(targetAmount).toFixed()]
+      BASE_CURRENCY_ID,
+      new BigNumber(supplyAmount).toFixed(),
+      currency,
+      new BigNumber(targetAmount).toFixed()
     );
   } else {
     // sell
     const supplyAmount = newListingAmount - listingAmount;
     const targetAmount = (baseAmount - newBaseAmount) * (1 - SLIPPAGE_RATIO);
     return api.api.tx.dex.swapCurrency(
-      [currency, new BigNumber(supplyAmount).toFixed()],
-      [BASE_CURRENCY_ID, new BigNumber(targetAmount).toFixed()]
+      currency,
+      new BigNumber(supplyAmount).toFixed(),
+      BASE_CURRENCY_ID,
+      new BigNumber(targetAmount).toFixed()
     );
   }
 };
