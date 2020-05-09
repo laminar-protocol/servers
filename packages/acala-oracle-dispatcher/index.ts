@@ -1,9 +1,8 @@
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher';
 import { ApiManager } from '@open-web3/api';
-import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@open-web3/util';
+import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat, withTimeout } from '@open-web3/util';
 import { configureLogger } from '@open-web3/app-util';
-import { withTimeout } from '@open-web3/util';
 import createServer from './api';
 import PriceFetcher from './PriceFetcher';
 import defaultConfig from './config';

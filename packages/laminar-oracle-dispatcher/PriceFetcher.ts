@@ -1,4 +1,3 @@
-import bn from 'big.js';
 import { CombinedFetcher, CCXTFetcher, CryptoCompareFetcher, FetcherInterface } from '@open-web3/fetcher';
 import config from './config';
 import AlphaVantageFetcher from './AlphaVantageFetcher';
