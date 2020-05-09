@@ -3,6 +3,7 @@ import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher
 import { ApiManager } from '@open-web3/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat, fromBaseUnit } from '@open-web3/util';
 import { configureLogger } from '@open-web3/app-util';
+import { withTimeout } from '@open-web3/util';
 import createServer from './api';
 import defaultConfig from './config';
 import PriceFetcher from './PriceFetcher';
@@ -93,8 +94,8 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
-    .addHandler(onEvent(onPrice, feedData))
-    .addHandler(onInterval({ interval: 8000 }, feedRandomData))
+    .addHandler(onEvent(onPrice, (data) => withTimeout(1000 * 60 * 2, feedData(data))))
+    .addHandler(onInterval({ interval: 8000 }, () => withTimeout(1000 * 60 * 2, feedRandomData())))
     .build();
 
   // API server
