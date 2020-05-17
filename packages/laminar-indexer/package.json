@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@laminar/api": "^0.2.0-beta.73",
-    "@open-web3/indexer": "^0.3.0-beta.5",
+    "@open-web3/indexer": "^0.3.0-beta.10",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
