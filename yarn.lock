@@ -2022,43 +2022,43 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@open-web3/api@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/api/-/api-0.3.0-beta.10.tgz#2e146d9218f2ce70cc816125cbce5a8762730872"
-  integrity sha512-sqPVTG4jJsEoeMygGAeYsOXPOVs8ZgTV4Lrnp7m1dD4IH2z9nvxrgfCuZir9UXtvalznmIRlmz0NgHwSF85siQ==
+"@open-web3/api@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/api/-/api-0.3.0-beta.11.tgz#07596984d6336b0f41f203e6e4d734d5231fa13c"
+  integrity sha512-xAf8mwY9eHPNV5OVFrkyuKtOvNQ2lLUqIAEMUws38x+JaJVbecPFMLVJREpcsAMqYH88Ef3paam8Ol1YtAUBig==
   dependencies:
-    "@open-web3/util" "^0.3.0-beta.10"
+    "@open-web3/util" "^0.3.0-beta.11"
 
-"@open-web3/app-util@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/app-util/-/app-util-0.3.0-beta.10.tgz#8d1437445535750d98a11055a6d41048673f49b6"
-  integrity sha512-S5+jolWPTexd/dqtgE+8GD2k6yxBxxXE0YsEP5edNcUxZm1eYtA16ux/e09YY5QAlDcDp41z9Om41+rRBVbOeg==
+"@open-web3/app-util@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/app-util/-/app-util-0.3.0-beta.11.tgz#4706b3560e553a42ef861e256cbe20662ac32b06"
+  integrity sha512-8Wqye/mt33rk3RLG1YXcXOVQKsrmJJWXzCn6kotYOTuGOZunr1teFYBbyk1o4OwUfggE1aQjgp7wUpn4OWB9nA==
   dependencies:
-    "@open-web3/util" "^0.3.0-beta.10"
+    "@open-web3/util" "^0.3.0-beta.11"
     rxjs "^6.5.5"
 
-"@open-web3/dispatcher@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.3.0-beta.10.tgz#4dc822b0ce1e31294fba2ab85ef437807fbee725"
-  integrity sha512-xp9z1Lwwqnssu181C5179HSo2zAk8ZtqOn/jt79MuxPHUwdJETEdrl+HxC1tbIrRpqQvgFargn+UCAVOqDgWpg==
+"@open-web3/dispatcher@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.3.0-beta.11.tgz#af08147cbb42d2c150f62715fc3a7e6e3175ce46"
+  integrity sha512-5L3H1S67Erq3qM7y4Q95DMDZpgvNY554Le7wvh+WVNi5KJNXUKZ6AqARHRwmTXjrln+NPJEsTecAAO58S0CqSg==
   dependencies:
-    "@open-web3/util" "^0.3.0-beta.10"
+    "@open-web3/util" "^0.3.0-beta.11"
 
-"@open-web3/fetcher@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/fetcher/-/fetcher-0.3.0-beta.10.tgz#bb212c2e036355aafa834aa3d7bc9c0eb50eebe8"
-  integrity sha512-yXY3At2tJFZguIrIDlzPM4LtfXEsq1/3ZKocNq9SjqrCKb9cCa3l0BJSgvLqz6vuvVteJ8tvZedC3mjhb4FRDg==
+"@open-web3/fetcher@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/fetcher/-/fetcher-0.3.0-beta.11.tgz#db55f995ec9ca3d159e6c75252511671afd0e034"
+  integrity sha512-FSNOG0zcZYCzvNj25LpF5zjTGr5gbiC7ytulMGGJ5kKgP3K0tYz/P34Z1nMiSgulVj+yVaud+8zoSspxNzMX3w==
   dependencies:
-    "@open-web3/util" "^0.3.0-beta.10"
+    "@open-web3/util" "^0.3.0-beta.11"
     axios "^0.19.2"
     ccxt "^1.26.3"
 
-"@open-web3/indexer@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/indexer/-/indexer-0.3.0-beta.10.tgz#694f4f9cee43217202d8e468f80b75823803aac9"
-  integrity sha512-kK4dNYYopZexM7QiXWQcecgDx8qSZZn2MKo3gyk5YEKslaWFP86E8td/9K86q8IJ9Kg3IfUmIKYkN7xVHw3DUw==
+"@open-web3/indexer@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/indexer/-/indexer-0.3.0-beta.11.tgz#340792c27c9556d88d844773ea510d99f1327e6a"
+  integrity sha512-bNuD0yh/RTQUtnvWF4lwp/UfVk7+i9bKyqqkWoYYYeYXA2R4fDUH/5yuAUBXzEGKn3RRymJBa2L2cNGLKNQtIg==
   dependencies:
-    "@open-web3/scanner" "^0.3.0-beta.10"
+    "@open-web3/scanner" "^0.3.0-beta.11"
     pg "^7.18.2"
     rxjs "^6.5.5"
     sequelize "^5.21.5"
@@ -2085,15 +2085,15 @@
   resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.3.0-beta.6.tgz#8f7727ce4a650869c149831d3bf60863ca6b597a"
   integrity sha512-FCmbnBgbG5bvnqACnBFGhoNTXeCkumXiKDNoPYg7w35NB368bpWHkDNzfY4Xxtnpp6OTZm8+HCVZfyWoqvxH8Q==
 
-"@open-web3/scanner@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/scanner/-/scanner-0.3.0-beta.10.tgz#cee7d59466ef85bf1c93c74a4dc8576c73b83750"
-  integrity sha512-X5JP9ceMgftfvI3whRr5OTJ6WomRpLyUrlf4Wguguv3pxhDSfgxDvRzmRj8pTSN1xduIl42IqHvmYVfBe3fgvQ==
+"@open-web3/scanner@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/scanner/-/scanner-0.3.0-beta.11.tgz#69b4bb84827d40b737850c337feedb1326237c2b"
+  integrity sha512-LLhjVxlgNZ7IqIyW2qJpqkpRIy4fkXEQL8hz9dcEbRtfQI2tASVxcH1jedNtNl7jmo7kU/Snt/eYvRhvo2ASnw==
 
-"@open-web3/util@^0.3.0-beta.10":
-  version "0.3.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@open-web3/util/-/util-0.3.0-beta.10.tgz#a670333985fd4ef6bba702fef9171d38d6d4ed5c"
-  integrity sha512-RM2uYkufUDFQBNyisRTu+lOU11oLuVE43qp8EmI3lD0eoM/iNoQ08YWFvkMzJf06Y5jRL4gD9TFfaH739gkwxg==
+"@open-web3/util@^0.3.0-beta.11":
+  version "0.3.0-beta.11"
+  resolved "https://registry.yarnpkg.com/@open-web3/util/-/util-0.3.0-beta.11.tgz#76472ccb06380ce2523f9ca3037525955865426d"
+  integrity sha512-kTBvnOfpSeEahkLkc2hjhVhvylfdTqBtr3Afp7DgJUl+Dl9Po6n0pGy7HAGT6CXgJV0gEeZ4Jj0a/8ym8j8Amw==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     big.js "^5.2.2"
