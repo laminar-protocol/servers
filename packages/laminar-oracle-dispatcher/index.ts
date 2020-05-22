@@ -3,6 +3,9 @@ import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher
 import { ApiManager } from '@open-web3/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat, fromBaseUnit } from '@open-web3/util';
 import { configureLogger } from '@open-web3/app-util';
+import { u8aToHex } from '@polkadot/util';
+import { Keyring } from '@polkadot/api';
+import { cryptoWaitReady } from '@polkadot/util-crypto';
 import createServer from './api';
 import defaultConfig from './config';
 import PriceFetcher from './PriceFetcher';
@@ -29,10 +32,19 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
   logger.info('Starting...');
 
+  await cryptoWaitReady();
+
+  const keyring = new Keyring({
+    type: 'sr25519'
+  });
+
+  const oracleAccount = keyring.addFromUri(config.seed);
+  const sessionKey = oracleAccount; // TODO: make it different
+
   const api = await ApiManager.create({
     ...options({}),
     wsEndpoint: config.wsUrl,
-    account: config.seed
+    keyring
   });
 
   logger.log('API details', {
@@ -70,16 +82,41 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
   const feedData = async (data: Array<{ currency: string; price: string }>, randomData = false) => {
-    const tx = api.api.tx.oracle.feedValues(data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]));
-    const result = api.signAndSend(tx);
-    await result.send;
-    const res = await api.signAndSend(tx).inBlock;
+    if (api.api.tx.oracle.feedValue) {
+      // old
+      const tx = api.api.tx.oracle.feedValues(
+        data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()])
+      );
+      const result = api.signAndSend(tx);
+      await result.send;
+      const res = await api.signAndSend(tx).inBlock;
+
+      if (!randomData) {
+        logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
+      }
+    } else {
+      // new
+      const index = 0; // TODO: lookup via available session key
+      const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
+      const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
+      const payload = api.api.registry.createType('(u32, Vec<(CurrencyId, Price)>)' as any, [nonce, values]);
+      const sig = sessionKey.sign(payload.toU8a());
+      logger.info('data', {
+        account: oracleAccount.address,
+        nonce: nonce.toString(),
+        payload: payload.toHex(),
+        sig: u8aToHex(sig)
+      });
+      const tx = api.api.tx.oracle.feedValues(values, index, sig);
+
+      await tx.send();
+
+      if (!randomData) {
+        logger.info('feedData done', { txHash: tx.hash });
+      }
+    }
 
     feedDataHeartbeat.markAlive();
-
-    if (!randomData) {
-      logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
-    }
   };
 
   const feedRandomData = async () => {
