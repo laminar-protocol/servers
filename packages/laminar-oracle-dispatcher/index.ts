@@ -44,7 +44,8 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const api = await ApiManager.create({
     ...options({}),
     wsEndpoint: config.wsUrl,
-    keyring
+    keyring,
+    account: config.seed
   });
 
   logger.log('API details', {
