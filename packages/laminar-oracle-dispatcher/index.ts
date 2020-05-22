@@ -82,7 +82,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const feedDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
-  const feedData = async (data: Array<{ currency: string; price: string }>, randomData = false) => {
+  const feedData = async (data: Array<{ currency: string; price: string }>, shouldLog = false) => {
     if (api.api.tx.oracle.feedValue) {
       // old
       const tx = api.api.tx.oracle.feedValues(
@@ -92,7 +92,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       await result.send;
       const res = await api.signAndSend(tx).inBlock;
 
-      if (!randomData) {
+      if (!shouldLog) {
         logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
       }
     } else {
@@ -112,7 +112,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
       await tx.send();
 
-      if (!randomData) {
+      if (!shouldLog) {
         logger.info('feedData done', { txHash: tx.hash });
       }
     }
@@ -120,18 +120,23 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     feedDataHeartbeat.markAlive();
   };
 
+  let counter = 0;
   const feedRandomData = async () => {
+    ++counter;
+    if (counter > 1000) {
+      counter = 0;
+    }
     const data = prevData.map((d) => {
       const randomVal = (Math.random() - 0.5) * 0.001; // +- 0.05%
       const price = d.price;
       return { ...d, price: fromBaseUnit(toBaseUnit(price).mul(1 + randomVal)).toFixed(10) };
     });
-    await feedData(data, true);
+    await feedData(data, counter % 40 === 0);
   };
 
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
-    .addHandler(onEvent(onPrice, (data) => feedData(data)))
+    // .addHandler(onEvent(onPrice, (data) => feedData(data)))
     .addHandler(onInterval({ interval: 8000 }, () => feedRandomData()))
     .build();
 
