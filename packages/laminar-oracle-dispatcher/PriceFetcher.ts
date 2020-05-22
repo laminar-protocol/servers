@@ -6,7 +6,12 @@ const CURRENCIES: { [key: string]: string } = {
   BTC: 'FBTC',
   ETH: 'FETH',
   EUR: 'FEUR',
-  JPY: 'FJPY'
+  JPY: 'FJPY',
+  AUD: 'FAUD',
+  CAD: 'FCAD',
+  CHF: 'FCHF',
+  XAU: 'FXAU',
+  OIL: 'FOIL'
 };
 
 const createFetcher = (exchange: string): FetcherInterface => {
