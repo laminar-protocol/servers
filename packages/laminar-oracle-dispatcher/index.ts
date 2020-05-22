@@ -92,7 +92,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       await result.send;
       const res = await api.signAndSend(tx).inBlock;
 
-      if (!shouldLog) {
+      if (shouldLog) {
         logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
       }
     } else {
@@ -112,8 +112,10 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
       await tx.send();
 
-      if (!shouldLog) {
+      if (shouldLog) {
         logger.info('feedData done', { txHash: tx.hash });
+      } else {
+        logger.debug('feedData done', { txHash: tx.hash });
       }
     }
 
