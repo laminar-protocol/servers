@@ -102,7 +102,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
       const payload = api.api.registry.createType('(u32, Vec<(CurrencyId, Price)>)' as any, [nonce, values]);
       const sig = sessionKey.sign(payload.toU8a());
-      logger.info('data', {
+      logger.debug('oracle.feedValues', {
         account: oracleAccount.address,
         nonce: nonce.toString(),
         payload: payload.toHex(),
