@@ -8,18 +8,20 @@
     "packages/*"
   ],
   "resolutions": {
-    "typescript": "^3.8.3"
+    "typescript": "3.8.3"
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx . && tsc --noEmit --pretty",
     "clean": "polkadot-dev-clean-build",
     "postinstall": "polkadot-dev-yarn-only",
-    "test": "jest --testPathIgnorePatterns e2e --passWithNoTests"
+    "test": "jest --testPathIgnorePatterns e2e --passWithNoTests",
+    "check-deps": "./node_modules/@open-web3/util/scripts/check-deps.js yarn.lock @polkadot/ @open-web3/"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/register": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "@open-web3/util": "^0.3.0-beta.11",
     "@polkadot/dev": "^0.32.17",
     "@polkadot/ts": "^0.2.1",
     "husky": "^4.2.3",
