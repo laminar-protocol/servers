@@ -139,7 +139,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
     // .addHandler(onEvent(onPrice, (data) => feedData(data)))
-    .addHandler(onInterval({ interval: 8000 }, () => feedRandomData()))
+    .addHandler(onInterval({ interval: 8000 }, () => feedRandomData()).withOptions({ maxConcurrentCount: 1 }))
     .build();
 
   // API server
