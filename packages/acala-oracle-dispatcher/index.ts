@@ -80,7 +80,14 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
-    const index = 0; // TODO: lookup via available session key
+    const members = await api.api.query.oracle.members();
+    const index = (members as any).findIndex((x: any) => x.eq(oracleAccount.address));
+    if (index === -1) {
+      logger.info('Not valid oracle operator', {
+        members: members.toHuman(),
+        account: oracleAccount.address
+      });
+    }
     const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
     const block = (await api.api.rpc.chain.getHeader()).number.toNumber();
     const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
@@ -92,7 +99,9 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     const sig = sessionKey.sign(payload.toU8a());
     logger.debug('oracle.feedValues', {
       account: oracleAccount.address,
+      index,
       nonce: nonce.toString(),
+      block: block.toString(),
       payload: payload.toHex(),
       sig: u8aToHex(sig)
     });
