@@ -83,40 +83,30 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
   const feedData = async (data: Array<{ currency: string; price: string }>, shouldLog = false) => {
-    if (api.api.tx.oracle.feedValue) {
-      // old
-      const tx = api.api.tx.oracle.feedValues(
-        data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()])
-      );
-      const result = api.signAndSend(tx);
-      await result.send;
-      const res = await api.signAndSend(tx).inBlock;
+    const index = 0; // TODO: lookup via available session key
+    const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
+    const block = (await api.api.rpc.chain.getHeader()).number.toNumber();
+    const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
+    const payload = api.api.registry.createType('(u32, BlockNumber, Vec<(CurrencyId, Price)>)' as any, [
+      nonce,
+      block,
+      values
+    ]);
+    const sig = sessionKey.sign(payload.toU8a());
+    logger.debug('oracle.feedValues', {
+      account: oracleAccount.address,
+      nonce: nonce.toString(),
+      payload: payload.toHex(),
+      sig: u8aToHex(sig)
+    });
+    const tx = api.api.tx.oracle.feedValues(values as any, index, block, sig);
 
-      if (shouldLog) {
-        logger.info('feedData done', { blockHash: res.blockHash, txHash: res.txHash });
-      }
+    await tx.send();
+
+    if (shouldLog) {
+      logger.info('feedData done', { txHash: tx.hash });
     } else {
-      // new
-      const index = 0; // TODO: lookup via available session key
-      const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
-      const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
-      const payload = api.api.registry.createType('(u32, Vec<(CurrencyId, Price)>)' as any, [nonce, values]);
-      const sig = sessionKey.sign(payload.toU8a());
-      logger.debug('oracle.feedValues', {
-        account: oracleAccount.address,
-        nonce: nonce.toString(),
-        payload: payload.toHex(),
-        sig: u8aToHex(sig)
-      });
-      const tx = api.api.tx.oracle.feedValues(values, index, sig);
-
-      await tx.send();
-
-      if (shouldLog) {
-        logger.info('feedData done', { txHash: tx.hash });
-      } else {
-        logger.debug('feedData done', { txHash: tx.hash });
-      }
+      logger.debug('feedData done', { txHash: tx.hash });
     }
 
     feedDataHeartbeat.markAlive();
