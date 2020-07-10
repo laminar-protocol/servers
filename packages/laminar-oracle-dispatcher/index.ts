@@ -82,7 +82,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const feedDataHeartbeat = new Heartbeat(config.interval * 4, 0);
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
-  const feedData = async (data: Array<{ currency: string; price: string }>, shouldLog = false) => {
+  const feedData = async (data: Array<{ currency: string; price: string }>) => {
     const members = await api.api.query.oracle.members();
     const index = (members as any).findIndex((x: any) => x.eq(oracleAccount.address));
     if (index === -1) {
@@ -112,33 +112,14 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
     await tx.send();
 
-    if (shouldLog) {
-      logger.info('feedData done', { txHash: tx.hash });
-    } else {
-      logger.debug('feedData done', { txHash: tx.hash });
-    }
+    logger.info('feedData done', { txHash: tx.hash });
 
     feedDataHeartbeat.markAlive();
   };
 
-  let counter = 0;
-  const feedRandomData = async () => {
-    ++counter;
-    if (counter > 1000) {
-      counter = 0;
-    }
-    const data = prevData.map((d) => {
-      const randomVal = (Math.random() - 0.5) * 0.001; // +- 0.05%
-      const price = d.price;
-      return { ...d, price: fromBaseUnit(toBaseUnit(price).mul(1 + randomVal)).toFixed(10) };
-    });
-    await feedData(data, counter % 40 === 0);
-  };
-
   builder()
     .addHandler(onInterval({ interval: config.interval, immediately: true }, readData))
-    // .addHandler(onEvent(onPrice, (data) => feedData(data)))
-    .addHandler(onInterval({ interval: 8000 }, () => feedRandomData()).withOptions({ maxConcurrentCount: 1 }))
+    .addHandler(onEvent(onPrice, (data) => feedData(data)))
     .build();
 
   // API server
