@@ -112,7 +112,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
     await tx.send();
 
-    logger.info('feedData done', { txHash: tx.hash });
+    logger.log('feedData done', { txHash: tx.hash });
 
     feedDataHeartbeat.markAlive();
   };
