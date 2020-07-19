@@ -52,7 +52,7 @@ const tradeOne = async (api: ApiManager, currency: string, price: number, heartb
     return api.api.tx.dex.swapCurrency(
       BASE_CURRENCY_ID,
       new BigNumber(supplyAmount).toFixed(),
-      currency,
+      currency as any,
       new BigNumber(targetAmount).toFixed()
     );
   } else {
@@ -60,7 +60,7 @@ const tradeOne = async (api: ApiManager, currency: string, price: number, heartb
     const supplyAmount = newListingAmount - listingAmount;
     const targetAmount = (baseAmount - newBaseAmount) * (1 - SLIPPAGE_RATIO);
     return api.api.tx.dex.swapCurrency(
-      currency,
+      currency as any,
       new BigNumber(supplyAmount).toFixed(),
       BASE_CURRENCY_ID,
       new BigNumber(targetAmount).toFixed()

@@ -1,9 +1,8 @@
 import { CombinedFetcher, CCXTFetcher, CryptoCompareFetcher, FetcherInterface } from '@open-web3/fetcher';
 import config from './config';
 
-const CURRENCIES: { [key: string]: string } = {
-  BTC: 'XBTC',
-  ETH: 'ETH'
+const CURRENCIES: { [key: string]: string[] } = {
+  BTC: ['XBTC', 'RENBTC']
 };
 
 const createFetcher = (exchange: string): FetcherInterface => {
@@ -37,14 +36,15 @@ export default class PriceFetcher {
       });
   }
 
-  fetchPrices(): Promise<{ currency: any; price: string }[]> {
-    return Promise.all(
+  async fetchPrices(): Promise<{ currency: any; price: string }[]> {
+    const res = await Promise.all(
       this.symbols.map((symbol) =>
         this.fetchers[symbol].getPrice(symbol).then((price) => {
           const [base] = symbol.split('/');
-          return { currency: CURRENCIES[base] || base, price };
+          return (CURRENCIES[base] || [base]).map((currency) => ({ currency, price }));
         })
       )
     );
+    return res.reduce((acc, val) => acc.concat(val), []);
   }
 }
