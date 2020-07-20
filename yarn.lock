@@ -2,37 +2,45 @@
 # yarn lockfile v1
 
 
-"@acala-network/api-derive@^0.2.0-beta.59":
-  version "0.2.0-beta.59"
-  resolved "https://registry.yarnpkg.com/@acala-network/api-derive/-/api-derive-0.2.0-beta.59.tgz#aac2b61d5f817c2fce2da94bd58f245f8a32933a"
-  integrity sha512-fOHd9oJaotd/TbsVoZv93EiEkrJ/CAiKy+LMhafozOgpzKW6P2Kt/5ap4ed+iv0yXk9Vktk24pYjNwSqHdI7zw==
+"@acala-network/api-derive@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@acala-network/api-derive/-/api-derive-0.2.0-beta.62.tgz#df12457397ac8eaba65808b9a878c66b902ac7c5"
+  integrity sha512-aoBwdx23wJkFn4CGsnl8XqXIhK1BaM41CvtCutOjPro1/L2cJNtt7G5UkzYvvd0WijdbnvE5X/NmhTJqeB51Kw==
   dependencies:
-    "@acala-network/types" "^0.2.0-beta.59"
+    "@acala-network/types" "^0.2.0-beta.62"
     "@babel/runtime" "^7.10.2"
     "@polkadot/rpc-core" "^1.18.1"
     memoizee "^0.4.14"
     rxjs "^6.5.5"
 
-"@acala-network/api@^0.2.0-beta.59":
-  version "0.2.0-beta.59"
-  resolved "https://registry.yarnpkg.com/@acala-network/api/-/api-0.2.0-beta.59.tgz#71013aa20c5dc9916614d4ab932e4911c63ac042"
-  integrity sha512-fWu9anMmMHsZhKHaonmdOjrxR4jAIXPUMqGMsay1NQmbbPMHgGe0gMg0xXbDzX2RDK0RLPdex7UWNCGv8v9b9A==
+"@acala-network/api@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@acala-network/api/-/api-0.2.0-beta.62.tgz#bad2f1b4d411d1f67bf7604a1e0b721e3122cb46"
+  integrity sha512-RgUq/oNXdznpMBqGY+2OSzsmd8PIWaZ0UWRnStpXq8XccPbQeBKLptot6wbHB28iUa6ILkfkB0ZztvKPRJfXQw==
   dependencies:
-    "@acala-network/api-derive" "^0.2.0-beta.59"
-    "@acala-network/types" "^0.2.0-beta.59"
+    "@acala-network/api-derive" "^0.2.0-beta.62"
+    "@acala-network/types" "^0.2.0-beta.62"
     "@babel/runtime" "^7.10.2"
-    "@open-web3/orml-api-derive" "^0.5.0-beta.0"
+    "@open-web3/orml-api-derive" "^0.5.0-beta.2"
     "@polkadot/api" "^1.18.1"
     "@polkadot/rpc-core" "^1.18.1"
 
-"@acala-network/types@^0.2.0-beta.59":
-  version "0.2.0-beta.59"
-  resolved "https://registry.yarnpkg.com/@acala-network/types/-/types-0.2.0-beta.59.tgz#78957d51033826f5f13bc87ebee3765621675559"
-  integrity sha512-ucVcHHV1lgpPfPqjjUTjJHKPoA7hLch6iQLzcGcKlqZ5Sc7pdsNlR2Gr3ofEyP3sWjE87zLe2MfMEYX0eUtlxw==
+"@acala-network/type-definitions@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@acala-network/type-definitions/-/type-definitions-0.2.0-beta.62.tgz#d249a57a8e0c43b90e7852fb943a7a32e65b3346"
+  integrity sha512-ltC5QKouV5CUOSKulZ0LrjZn8oda1tBnh7YA5If5B8ow2LlA+/Wgp4Ex+5erHwFVySmz5IN/3XHCHe9XXm6dnw==
   dependencies:
+    "@open-web3/orml-type-definitions" "^0.5.0-beta.2"
+
+"@acala-network/types@^0.2.0-beta.62":
+  version "0.2.0-beta.62"
+  resolved "https://registry.yarnpkg.com/@acala-network/types/-/types-0.2.0-beta.62.tgz#e83ea4781a8c26eee1b5b988c8dd886b2651c727"
+  integrity sha512-WUdf+NAP0oQdZ5Gb6qTzoCf46gSuZ1IIaQi68T5b2fNGHr9rNo/iDE7qBB3Y2RawNrr9jaRKX9etpe0KzH43kA==
+  dependencies:
+    "@acala-network/type-definitions" "^0.2.0-beta.62"
     "@babel/runtime" "^7.10.2"
-    "@open-web3/api-mobx" "^0.5.0-beta.0"
-    "@open-web3/orml-types" "^0.5.0-beta.0"
+    "@open-web3/api-mobx" "^0.5.0-beta.2"
+    "@open-web3/orml-types" "^0.5.0-beta.2"
     "@polkadot/api" "^1.18.1"
     "@polkadot/typegen" "^1.18.1"
     "@polkadot/types" "^1.18.1"
@@ -2086,10 +2094,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@open-web3/api-mobx@^0.5.0-beta.0":
-  version "0.5.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@open-web3/api-mobx/-/api-mobx-0.5.0-beta.0.tgz#59aa7f7387a26e11ab4819a6d2640eb03fce42a2"
-  integrity sha512-6ZaBEV06q+KVtW1PUFpw1BTRx8KH7LQaWcBzFvefFmxLctfzokEkPS9uefm+DF6oMMEGKnB6SrJBCuQUZmon4w==
+"@open-web3/api-mobx@^0.5.0-beta.2":
+  version "0.5.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@open-web3/api-mobx/-/api-mobx-0.5.0-beta.2.tgz#cebaa9b82166797af98033658a84f8b86c3d8cb8"
+  integrity sha512-7aVIJm1LI/YfwGq8AeMV4ppBDZWZCFtuPvFQSNPw+A1tQRWWGHazNhX2c1oapNsBCIBIuQxBOuCdzQRv/C0W5w==
   dependencies:
     "@polkadot/api" "^1.23.1"
     "@polkadot/types" "^1.23.1"
@@ -2148,23 +2156,28 @@
     memoizee "^0.4.14"
     rxjs "^6.5.5"
 
-"@open-web3/orml-api-derive@^0.5.0-beta.0":
-  version "0.5.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@open-web3/orml-api-derive/-/orml-api-derive-0.5.0-beta.0.tgz#53c1cc44e3353ee1a93ded426551f9084ac426ef"
-  integrity sha512-3+xFUfL9vCobxTz+sU2s0SqxZHjyo/q6yyo1ucGoA0w1IEanOhz74GVq3NMPDPlNnKojFRJKNFx2+cbsk5CsMA==
+"@open-web3/orml-api-derive@^0.5.0-beta.2":
+  version "0.5.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-api-derive/-/orml-api-derive-0.5.0-beta.2.tgz#1926f463f2a526fee331c4cb31c78202de13c92d"
+  integrity sha512-/IcS0pYG21ojNgc5sCwqhqc6N3rEVo0WH726eC/xG3cPgpGRgeVEzkU02jVNgD3RUGeR+RiEliwt6PSse4PVbw==
   dependencies:
     memoizee "^0.4.14"
     rxjs "^6.5.5"
+
+"@open-web3/orml-type-definitions@^0.5.0-beta.2":
+  version "0.5.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-type-definitions/-/orml-type-definitions-0.5.0-beta.2.tgz#0067f823f39883f845990d2da0cc9b86b82895b8"
+  integrity sha512-29+QjjCMdNF5diPTwVZVXJU09LWoP9AOypMghY1oGB0hAej57Y6Ww5N611x7WSZjaKJCfZu11Tpy8lKXVcNWTg==
 
 "@open-web3/orml-types@^0.3.0-beta.9":
   version "0.3.0-beta.31"
   resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.3.0-beta.31.tgz#6d9fe18e253f6a56dc5ee2f9481cbcc993049ed0"
   integrity sha512-kqSnROnb5zhiMC3PsPlIPnzD4PH7noZyYx2YaLpUdRPihrSeeQD0YF1PTpsHQgjK2mS/05EmYxOhkVY5zR6jiQ==
 
-"@open-web3/orml-types@^0.5.0-beta.0":
-  version "0.5.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.5.0-beta.0.tgz#6d50f803d05d0efda4aed0d7e9d312236cba744d"
-  integrity sha512-ii33GPFuZOzKqoMw5o3cGMLA/+aR7McyEaVhbrul1Q+5i4iB81EPFGxxGhP9YtuCCc//rbAyb9lKYnct1IATHg==
+"@open-web3/orml-types@^0.5.0-beta.2":
+  version "0.5.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.5.0-beta.2.tgz#c6a9f8455398c3361447d26c7d5e0bfc852bbf03"
+  integrity sha512-d2d5uAAGldbvMe63/5y0hhDSAmoYSzaar0XHHRR7ryD/Iy+wcL6juELqZyGCYBkEuSDkq8VsOsiSBFdHvIQMYA==
 
 "@open-web3/scanner@^0.5.0-beta.0":
   version "0.5.0-beta.0"
