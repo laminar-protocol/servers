@@ -63,7 +63,6 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   const readData = () => {
     priceFetcher
       .fetchPrices()
-      .then((prices) => [...prices, { currency: 'DOT', price: '300' }])
       .then((prices) => {
         onPrice.emit(prices);
 

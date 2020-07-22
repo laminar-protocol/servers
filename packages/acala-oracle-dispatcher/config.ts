@@ -25,12 +25,11 @@ const config = () => {
         throw new Error(`Missing EXCHANGES_${base}_${quote}`);
       }
       const exchanges = EXCHANGES.split(',');
-      return { [symbol]: exchanges };
+      return [symbol, exchanges] as [string, string[]];
     })
-    .reduce((acc, x) => {
-      const key = Object.keys(x)[0];
-      return { ...acc, [key]: x[key] };
-    });
+    .reduce((acc, [symbol, exchanges]) => {
+      return { ...acc, [symbol]: exchanges };
+    }, {} as Record<string, string[]>);
 
   const config = {
     wsUrl: process.env.WS_URL as string,
