@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "tables": [
+    {
+      "table": { "schema": "public", "name": "Blocks" },
+      "array_relationships": [
+        {
+          "name": "events",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Events" },
+              "column_mapping": { "blockHash": "blockHash" }
+            }
+          }
+        },
+        {
+          "name": "extrinsics",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Extrinsics" },
+              "column_mapping": { "blockHash": "blockHash" }
+            }
+          }
+        }
+      ]
+    },
+    { "table": { "schema": "public", "name": "DispatchableCalls" } },
+    {
+      "table": { "schema": "public", "name": "Events" },
+      "object_relationships": [
+        {
+          "name": "block",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Blocks" },
+              "column_mapping": { "blockHash": "blockHash" }
+            }
+          }
+        },
+        {
+          "name": "extrinsic",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Extrinsics" },
+              "column_mapping": { "blockHash": "blockHash", "phaseIndex": "index" }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "table": { "schema": "public", "name": "Extrinsics" },
+      "object_relationships": [
+        {
+          "name": "block",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Blocks" },
+              "column_mapping": { "blockHash": "blockHash" }
+            }
+          }
+        }
+      ],
+      "array_relationships": [
+        {
+          "name": "events",
+          "using": {
+            "manual_configuration": {
+              "remote_table": { "schema": "public", "name": "Events" },
+              "column_mapping": { "blockHash": "blockHash", "index": "phaseIndex" }
+            }
+          }
+        }
+      ]
+    },
+    { "table": { "schema": "public", "name": "Metadata" } },
+    { "table": { "schema": "public", "name": "Statuses" } }
+  ]
+}
