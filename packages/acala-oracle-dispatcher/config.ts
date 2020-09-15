@@ -40,6 +40,7 @@ const config = () => {
     env: process.env.NODE_ENV || 'development',
     logFilter: process.env.LOG_FILTER,
     logLevel: process.env.LOG_LEVEL,
+    oracleName: process.env.ORACLE_NAME as string,
     port: process.env.PORT || 3000,
     cryptoCompareApiKey,
     symbols,
@@ -54,6 +55,9 @@ const config = () => {
   }
   if (!config.alphaVantageApiKey) {
     throw new Error('Missing ALPHA_VANTAGE_API_KEY');
+  }
+  if (!config.oracleName || !['acalaOracle', 'bandOracle'].includes(config.oracleName)) {
+    throw new Error(`Wrong ORACLE_NAME, expecting "acalaOracle" or "bandOracle"`);
   }
 
   return config;
