@@ -57,7 +57,7 @@ const config = () => {
     throw new Error('Missing ALPHA_VANTAGE_API_KEY');
   }
   if (!config.oracleName || !['acalaOracle', 'bandOracle'].includes(config.oracleName)) {
-    throw new Error(`Wrong ORACLE_NAME, expecting "acalaOracle" or "bandOracle"`);
+    throw new Error('Wrong ORACLE_NAME, expecting "acalaOracle" or "bandOracle"');
   }
 
   return config;
