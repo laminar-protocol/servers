@@ -83,7 +83,10 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   heartbeats.addHeartbeat('feedData', feedDataHeartbeat);
 
   const feedData = async (data: Array<{ currency: string; price: string }>) => {
-    const members = await api.api.query.oracle.members();
+    const oracleQuery = api.api.query[config.oracleName];
+    const oracleTx = api.api.tx[config.oracleName];
+
+    const members = await oracleQuery.members();
     const index = (members as any).findIndex((x: any) => x.eq(oracleAccount.address));
     if (index === -1) {
       logger.info('Not valid oracle operator', {
@@ -92,29 +95,20 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       });
     }
     const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
-    const block = (await api.api.rpc.chain.getHeader()).number.toNumber();
-    const nonce = await api.api.query.oracle.nonces(oracleAccount.address);
-    const payload = api.api.registry.createType('(u32, BlockNumber, Vec<(CurrencyId, Price)>)' as any, [
-      nonce,
-      block,
-      values
-    ]);
-    const sig = sessionKey.sign(payload.toU8a());
+
     logger.debug('oracle.feedValues', {
       account: oracleAccount.address,
-      index,
-      nonce: nonce.toString(),
-      block: block.toString(),
-      payload: payload.toHex(),
-      sig: u8aToHex(sig)
+      index
     });
-    const tx = api.api.tx.oracle.feedValues(values as any, index, block, sig);
 
-    await tx.send();
-
-    logger.log('feedData done', { txHash: tx.hash });
+    const tx = oracleTx.feedValues(values as any);
+    const sendResult = api.signAndSend(tx);
+    await sendResult.send;
+    const events = await sendResult.inBlock;
 
     feedDataHeartbeat.markAlive();
+
+    logger.info('feedData done', { txHash: events.txHash, blockHash: events.blockHash });
   };
 
   builder()

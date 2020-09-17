@@ -42,6 +42,7 @@ const config = () => {
     logFilter: process.env.LOG_FILTER,
     logLevel: process.env.LOG_LEVEL,
     port: process.env.PORT || 3000,
+    oracleName: process.env.ORACLE_NAME as string,
     cryptoCompareApiKey,
     symbols,
     exchanges
