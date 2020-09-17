@@ -1495,7 +1495,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@laminar/api@^0.2.0-beta.123":
+"@laminar/api@^0.2.0-beta.123", "@laminar/api@^0.2.0-beta.141":
   version "0.2.0-beta.141"
   resolved "https://registry.yarnpkg.com/@laminar/api/-/api-0.2.0-beta.141.tgz#1e8d0fb40174033b6393455557a12883069b133a"
   integrity sha512-yB4a0o13B7vCZlwFgPcDAVFuEzTF8XIl9T0hfaJLU+kjzOeAKQt9DMHB0ZKjXEX2upksE5J982+zAjSVGl8u/w==
@@ -2362,27 +2362,12 @@
     mobx "^5.15.4"
     mobx-utils "^5.5.7"
 
-"@open-web3/api@^0.5.0-beta.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@open-web3/api/-/api-0.5.1.tgz#aa7cc071de6fb87cc112ccd5c0a6ba468f29a274"
-  integrity sha512-JEur5yiaU3bWjNKY+bL1PGFlNFteVUElXlmvu3MWz+Q81C2jRPkvTwbvYKtANg5fBAgnxCQdHi+QMhab4dhN9Q==
-  dependencies:
-    "@open-web3/util" "^0.5.1"
-
 "@open-web3/api@^0.6.0-beta.16":
   version "0.6.0-beta.16"
   resolved "https://registry.yarnpkg.com/@open-web3/api/-/api-0.6.0-beta.16.tgz#01dfc7b4012e644114d9fb87e8334e134bea3353"
   integrity sha512-vHG4SfQYc83AVggylwahDifGWpP7fZxJSl3ICh2hEppMybShqxNkqX8JM5b91Bz+JaPjaYJB6Y8WlI1amCelDQ==
   dependencies:
     "@open-web3/util" "^0.6.0-beta.16"
-
-"@open-web3/app-util@^0.5.0-beta.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@open-web3/app-util/-/app-util-0.5.1.tgz#73a9877b80a98dbb244556281bc634030e79fdbc"
-  integrity sha512-6bifW5tgbv4JpKv5jE+bkgIy44lL8DSJqnfg+kEx+VDg20jI7e2tpbQgbtj80fBAVnrwdvfZkcL/m1nyGiUfdw==
-  dependencies:
-    "@open-web3/util" "^0.5.1"
-    rxjs "^6.5.5"
 
 "@open-web3/app-util@^0.6.0-beta.16":
   version "0.6.0-beta.16"
@@ -2392,28 +2377,12 @@
     "@open-web3/util" "^0.6.0-beta.16"
     rxjs "^6.5.5"
 
-"@open-web3/dispatcher@^0.5.0-beta.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.5.1.tgz#872b809a09e34174ee3144e8af04120a1595770b"
-  integrity sha512-5Xrigbz+lzT/w1suxwHEI+300mGxDBsPvAil6HufAhtzMJj2+YSfe8zTscLk8aQ+ZGWHwJaukiF6IZCJh5J/Mw==
-  dependencies:
-    "@open-web3/util" "^0.5.1"
-
 "@open-web3/dispatcher@^0.6.0-beta.16":
   version "0.6.0-beta.16"
   resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.6.0-beta.16.tgz#358051c35064f3fdb36d2159f9f8b490c8ce335e"
   integrity sha512-0/zXS5kPUbwJ7/wbsPaARSgysSU57xNcHezDepuoJnQG7fi2+feBdxVHYjX+Bu5gRwIwkNVbCeWtcUjqMCBgpg==
   dependencies:
     "@open-web3/util" "^0.6.0-beta.16"
-
-"@open-web3/fetcher@^0.5.0-beta.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@open-web3/fetcher/-/fetcher-0.5.1.tgz#6fd4ba3ba4d69906c20e298d92177d4b8ef6d95e"
-  integrity sha512-25YEcmL1lb9nF1vrLW7YYQptnzQwy2nRY4QpUmzd3mLgbfq62OZOFdRNLmbeeNgUVlmm/IHMw9OZnHyBGRr9vA==
-  dependencies:
-    "@open-web3/util" "^0.5.1"
-    axios "^0.19.2"
-    ccxt "^1.26.3"
 
 "@open-web3/fetcher@^0.6.0-beta.16":
   version "0.6.0-beta.16"
@@ -2470,7 +2439,7 @@
   resolved "https://registry.yarnpkg.com/@open-web3/scanner/-/scanner-0.5.1.tgz#2095f66188ba2043a31e828157fca227be485263"
   integrity sha512-Qpo9HkuXtL6MvNmWAevPDGfJiGzZzteF0LoECkeFwUdj3ATQWTp/GkhtrXyzaKU6iz1JxOI/evJKqeYPfHMKdg==
 
-"@open-web3/util@^0.5.0-beta.0", "@open-web3/util@^0.5.1":
+"@open-web3/util@^0.5.0-beta.0":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@open-web3/util/-/util-0.5.1.tgz#3c027125f56326bd2ec17fbaaa4e75a59fe6362f"
   integrity sha512-dVrXyLG4fEOgSc7yUChr/0L1xG5WYb4bngYT2z1IeFjdSCVR639tQNRVSPCxB+EXVdTEsPROYsmd3Yb0x+eJTg==

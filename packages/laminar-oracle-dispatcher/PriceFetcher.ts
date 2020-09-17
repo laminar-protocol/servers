@@ -53,8 +53,9 @@ export default class PriceFetcher {
     return Promise.all(
       this.symbols.map((symbol) =>
         this.fetchers[symbol].getPrice(symbol).then((price) => {
-          const [base] = symbol.split('/');
-          return { currency: CURRENCIES[base] || base, price };
+          const [base, quote] = symbol.split('/');
+          // USD/JPY
+          return { currency: CURRENCIES[base] || CURRENCIES[quote] || base, price };
         })
       )
     );
