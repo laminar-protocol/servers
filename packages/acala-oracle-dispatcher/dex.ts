@@ -4,7 +4,7 @@ import { defaultLogger, HeartbeatGroup } from '@open-web3/util';
 
 const logger = defaultLogger.createLogger('dex');
 
-const BASE_CURRENCY_ID = 'AUSD';
+const BASE_CURRENCY_ID = { Token: 'AUSD' };
 
 // if more than `ARBITRAGE_RATIO`, do swap; 3%
 const ARBITRAGE_RATIO = 0.03;
@@ -13,7 +13,7 @@ const ARBITRAGE_RATIO = 0.03;
 const SLIPPAGE_RATIO = 0.01;
 
 const tradeOne = async (api: ApiManager, currency: string, price: number, heartbeat: HeartbeatGroup) => {
-  const pool: any = await api.api.query.dex.liquidityPool(currency);
+  const pool: any = await api.api.query.dex.liquidityPool({ Token: currency });
   const [listingAmount, baseAmount]: [number, number] = pool.map((x: any) => +x.toString()); // this is a lossy conversion but it is fine
   if (!listingAmount) {
     logger.debug('Skip, zero listing amount', { currency });
@@ -49,20 +49,18 @@ const tradeOne = async (api: ApiManager, currency: string, price: number, heartb
     // buy
     const supplyAmount = newBaseAmount - baseAmount;
     const targetAmount = (listingAmount - newListingAmount) * (1 - SLIPPAGE_RATIO);
-    return api.api.tx.dex.swapCurrency(
-      BASE_CURRENCY_ID,
+    return api.api.tx.dex.swapWithExactSupply(
+      [BASE_CURRENCY_ID, { Token: currency }],
       new BigNumber(supplyAmount).toFixed(),
-      currency as any,
       new BigNumber(targetAmount).toFixed()
     );
   } else {
     // sell
     const supplyAmount = newListingAmount - listingAmount;
     const targetAmount = (baseAmount - newBaseAmount) * (1 - SLIPPAGE_RATIO);
-    return api.api.tx.dex.swapCurrency(
-      currency as any,
+    return api.api.tx.dex.swapWithExactSupply(
+      [BASE_CURRENCY_ID, { Token: currency }],
       new BigNumber(supplyAmount).toFixed(),
-      BASE_CURRENCY_ID,
       new BigNumber(targetAmount).toFixed()
     );
   }
