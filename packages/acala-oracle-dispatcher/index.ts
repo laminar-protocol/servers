@@ -3,7 +3,6 @@ import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher
 import { ApiManager } from '@open-web3/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat } from '@open-web3/util';
 import { configureLogger } from '@open-web3/app-util';
-import { u8aToHex } from '@polkadot/util';
 import { Keyring } from '@polkadot/api';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
 import createServer from './api';
@@ -92,7 +91,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
       });
     }
 
-    const values = data.map(({ currency, price }) => [currency, toBaseUnit(price).toFixed()]);
+    const values = data.map(({ currency, price }) => [{ Token: currency }, toBaseUnit(price).toFixed()]);
 
     logger.debug('oracle.feedValues', {
       account: oracleAccount.address,

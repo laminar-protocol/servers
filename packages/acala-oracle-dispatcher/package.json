@@ -9,7 +9,7 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@acala-network/api": "^0.4.0-beta.9",
+    "@acala-network/api": "^0.4.0-beta.15",
     "@open-web3/api": "^0.6.0-beta.19",
     "@open-web3/app-util": "^0.6.0-beta.19",
     "@open-web3/dispatcher": "^0.6.0-beta.19",
