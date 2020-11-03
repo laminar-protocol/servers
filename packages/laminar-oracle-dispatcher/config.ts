@@ -57,6 +57,9 @@ const config = () => {
   if (!config.alphaVantageApiKey) {
     throw new Error('Missing ALPHA_VANTAGE_API_KEY');
   }
+  if (!config.oracleName || !['laminarOracle', 'bandOracle'].includes(config.oracleName)) {
+    throw new Error('Wrong ORACLE_NAME, expecting "laminarOracle" or "bandOracle"');
+  }
 
   return config;
 };

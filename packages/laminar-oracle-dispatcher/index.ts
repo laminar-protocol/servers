@@ -3,7 +3,6 @@ import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher
 import { ApiManager } from '@open-web3/api';
 import { toBaseUnit, defaultLogger, HeartbeatGroup, Heartbeat, fromBaseUnit } from '@open-web3/util';
 import { configureLogger } from '@open-web3/app-util';
-import { u8aToHex } from '@polkadot/util';
 import { Keyring } from '@polkadot/api';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
 import createServer from './api';
