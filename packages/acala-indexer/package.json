@@ -9,8 +9,8 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@acala-network/types": "^0.4.0-beta.15",
-    "@open-web3/indexer": "^0.5.0-beta.0",
+    "@acala-network/types": "^0.4.0-beta.32",
+    "@open-web3/indexer": "^0.6.0-beta.27",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {

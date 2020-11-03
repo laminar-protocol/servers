@@ -8,15 +8,7 @@
     "packages/*"
   ],
   "resolutions": {
-    "typescript": "3.8.3",
-    "@polkadot/rpc-provider": "^2.0.1",
-    "@polkadot/typegen": "^2.0.1",
-    "@polkadot/rpc-core": "^2.0.1",
-    "@polkadot/types": "^2.0.1",
-    "@polkadot/types-known": "^2.0.1",
-    "@polkadot/api": "^2.0.1",
-    "@polkadot/api-derive": "^2.0.1",
-    "@polkadot/metadata": "^2.0.1"
+    "typescript": "3.8.3"
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx . && tsc --noEmit --pretty",
