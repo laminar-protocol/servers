@@ -45,7 +45,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
     wsEndpoint: config.wsUrl,
     keyring,
     account: config.seed
-  });
+  } as any);
 
   logger.log('API details', {
     defaultAccount: api.defaultAccount?.address,

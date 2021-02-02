@@ -38,7 +38,6 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
   });
 
   const oracleAccount = keyring.addFromUri(config.seed);
-  const sessionKey = oracleAccount; // TODO: make it different
 
   const api = await ApiManager.create({
     ...options({}),
@@ -105,7 +104,7 @@ const run = async (overrideConfig: Partial<ReturnType<typeof readEnvConfig>> = {
 
     feedDataHeartbeat.markAlive();
 
-    logger.info('feedData done', { txHash: events.txHash, blockHash: events.blockHash });
+    logger.info('feedData done', { txHash: events.txHash.toHuman(), blockHash: events.blockHash.toHuman() });
   };
 
   const tradeDexHeartbeat = new HeartbeatGroup({ livePeriod: config.interval * 4 });
