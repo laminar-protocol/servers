@@ -9,8 +9,8 @@
     "start": "ts-node ./index.ts"
   },
   "dependencies": {
-    "@laminar/api": "^0.3.1",
-    "@open-web3/indexer": "^0.9.1",
+    "@laminar/api": "^0.3.2-1",
+    "@open-web3/indexer": "^0.9.2-0",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
