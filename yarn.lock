@@ -2483,20 +2483,13 @@
   dependencies:
     "@octokit/openapi-types" "^5.3.2"
 
-"@open-web3/api-mobx@^0.9.1", "@open-web3/api-mobx@^0.9.2-0", "@open-web3/api-mobx@^0.9.4-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/api-mobx/-/api-mobx-0.9.2-0.tgz#84e80a5b13946708f36425896ed37a997ba963a4"
-  integrity sha512-UOH0/5cg8En3v/0gIObDjePkpDqXaJUHLOPDS4PfJqDJ16W4iAvtOhECOhpYDmLAP5/52RWFYVXoVk0uzSztkA==
+"@open-web3/api-mobx@^0.9.1", "@open-web3/api-mobx@^0.9.2-0", "@open-web3/api-mobx@^0.9.4-0", "@open-web3/api-mobx@^0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/api-mobx/-/api-mobx-0.9.4-3.tgz#bb1d87012ae36f4fd4d27e78971e22cd8f9c6da4"
+  integrity sha512-blmZMInFOaOZS31rX2ILeF4QS+CjuOGPGmPZF4s3SjrIe/qG0Q3Sm3x2sgJ72PJpIABCVs+oiHHCm6TUbBdq+Q==
   dependencies:
     mobx "^5.15.4"
     mobx-utils "^5.5.7"
-
-"@open-web3/api@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/api/-/api-0.9.2-0.tgz#239ffbddc5aa4618bbd75542a06ea6d5bd78d4e8"
-  integrity sha512-5UFZe5sVdPXpeZ0cDWjuFbToduOZx4vANmqh9b1ae/asCCf4Jvp3vq8RdDXEG3FLz76bFMV3g+dSdYDig9+uvg==
-  dependencies:
-    "@open-web3/util" "^0.9.2-0"
 
 "@open-web3/api@^0.9.4-3":
   version "0.9.4-3"
@@ -2504,14 +2497,6 @@
   integrity sha512-Vu9n4t2W6mYVon26XmlSJEV1ohqjWH4NqAOatPq75mjt96CwSPEuXX3wpsE6puYW2Rg5QkfFf8MoaIPzhcRApQ==
   dependencies:
     "@open-web3/util" "0.9.4-3"
-
-"@open-web3/app-util@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/app-util/-/app-util-0.9.2-0.tgz#1b6a61b59052d518cb973ebb0f98a609c5e88787"
-  integrity sha512-18eC0IEFGueJFQi74Ox9AIVLleuSpWxo3tT3O6q8G2jlXIVQZMlx1rzVLRisjzXM2JMbmd1Vpbn8F5jxuIt5AQ==
-  dependencies:
-    "@open-web3/util" "^0.9.2-0"
-    rxjs "^6.6.6"
 
 "@open-web3/app-util@^0.9.4-3":
   version "0.9.4-3"
@@ -2521,28 +2506,12 @@
     "@open-web3/util" "0.9.4-3"
     rxjs "^6.6.6"
 
-"@open-web3/dispatcher@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.9.2-0.tgz#09fe94f9b6577bb6a2ff3903bc7b3c095a2bc59c"
-  integrity sha512-/pNPtxzeeERV2JzL3/HPWuy3wXKzr6C8hJeAOXCCLirLYWO+McbTmChrNoG8ksj0cBcpX2cOeHDVxUsoMw2vmQ==
-  dependencies:
-    "@open-web3/util" "^0.9.2-0"
-
 "@open-web3/dispatcher@^0.9.4-3":
   version "0.9.4-3"
   resolved "https://registry.yarnpkg.com/@open-web3/dispatcher/-/dispatcher-0.9.4-3.tgz#ddb2c0fef3e5a313686ee97a0d6839696dffe555"
   integrity sha512-XQPJIzoX43m/WJTlOkpVDrlI52DE3RyxhWaRGk6nJyjY7LTRRcgrmYifH0ujTSuuwY6VGA6mBi3G88NFIdRU4g==
   dependencies:
     "@open-web3/util" "0.9.4-3"
-
-"@open-web3/fetcher@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/fetcher/-/fetcher-0.9.2-0.tgz#c2de93eddd1e5e1b0553514dadd8ecc60eb2c069"
-  integrity sha512-Rrofll96P/vP0n4AQCCMqqoxfOg9TL/heL0Kpws2qVbiModUQZ2oAXrvqF9bTrVouLdviDCY5QcwVXznRsaykg==
-  dependencies:
-    "@open-web3/util" "^0.9.2-0"
-    axios "^0.19.2"
-    ccxt "^1.26.3"
 
 "@open-web3/fetcher@^0.9.4-3":
   version "0.9.4-3"
@@ -2553,54 +2522,46 @@
     axios "^0.19.2"
     ccxt "^1.26.3"
 
-"@open-web3/indexer@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/indexer/-/indexer-0.9.2-0.tgz#e0dce85e1455fec8606e4e4369b29a826426658a"
-  integrity sha512-3YUkprAeRKnKzLE0E1/yvvqVZHGlMZM5Wu0U/DtYRoIKwL92bbbVu1V0/4DP9Awucr7SiLuEI/BzamrFrXA94A==
+"@open-web3/indexer@^0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/indexer/-/indexer-0.9.4-3.tgz#49954502de240f180df0ed0b310b7646bf69270f"
+  integrity sha512-DMcn3/PJIIxnCjLGjaVK/9Om/COGweXoaHeDVGQJl2FTB0UOL/4LPVFvdT0Da7bLe34EOqpymx5t4dfaGP7VPw==
   dependencies:
-    "@open-web3/scanner" "^0.9.2-0"
+    "@open-web3/scanner" "0.9.4-3"
     pg "^8.4.2"
     rxjs "^6.6.6"
     sequelize "^6.3.5"
     winston "^3.2.1"
 
-"@open-web3/orml-api-derive@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/orml-api-derive/-/orml-api-derive-0.9.2-0.tgz#deecb21a345a0a38808f7a9f7589d287c5a054e8"
-  integrity sha512-Uh0NMvSe4zllIB55cbfpaqsXRrBm4T4znOhnsh1tfxaK4bn8wWMr86o3PCSfOMuNcBYMAGNrwtp7hM8Au7gvrg==
+"@open-web3/orml-api-derive@^0.9.2-0", "@open-web3/orml-api-derive@^0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-api-derive/-/orml-api-derive-0.9.4-3.tgz#0fb0e0afe3a20a84aa3c23a8da862d60d9299c8d"
+  integrity sha512-aZOuTQCZLa3HK5O/ztqsyqV8IYiW8Gq7AdMFSXMDa+e6SA3JygXBHmQEYUPrQXUlvAKsswXvuS/ZV7ntyUHcfQ==
   dependencies:
     memoizee "^0.4.14"
     rxjs "^6.6.6"
 
-"@open-web3/orml-type-definitions@^0.9.1", "@open-web3/orml-type-definitions@^0.9.2-0", "@open-web3/orml-type-definitions@^0.9.4-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/orml-type-definitions/-/orml-type-definitions-0.9.2-0.tgz#2746e6279908ed32962bdc980adf7f91b2addf9e"
-  integrity sha512-isgOdepqzaJT9/xI+ZdmJFquif3J2WN5Q9BxXpkvB4yl0NZN1/AD8j1kXwEtBn/mMeyzux5fJHrFxMiKQTCIZg==
+"@open-web3/orml-type-definitions@0.9.4-3", "@open-web3/orml-type-definitions@^0.9.1", "@open-web3/orml-type-definitions@^0.9.2-0", "@open-web3/orml-type-definitions@^0.9.4-0", "@open-web3/orml-type-definitions@^0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-type-definitions/-/orml-type-definitions-0.9.4-3.tgz#292b695469056bf3fb869c732d52709ff06b97cf"
+  integrity sha512-4aP0BlOv3nQrika7AKjrhhQhtNWxB3XYwFbf2X+7Zhvb/khMirCb6SDA6TxHyAF9tf41PN6kRWLe98uF27eubw==
 
-"@open-web3/orml-types@^0.9.1", "@open-web3/orml-types@^0.9.2-0", "@open-web3/orml-types@^0.9.4-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.9.2-0.tgz#1d010fe36c05524e0e1d8f53684aeb0041f24ea6"
-  integrity sha512-uquoM+3uO/4j347CfWzDBgvHXjdh5MqzHEG8R4onhGTXU5jXzbhxAP/gpuWu9bLAKHywHtq7BUkQMKXGSwFfjg==
+"@open-web3/orml-types@^0.9.1", "@open-web3/orml-types@^0.9.2-0", "@open-web3/orml-types@^0.9.4-0", "@open-web3/orml-types@^0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/orml-types/-/orml-types-0.9.4-3.tgz#a23b0a98c67ef19c57adf9777ae683739545a343"
+  integrity sha512-uf9rH/R+Lu8jfLp6VHbtp6T/NX4EYabQJvjwaTICMywBpB0dDWuhr/pJCa+HJwbWJQlxmlr99bxZmenTQZWk+g==
   dependencies:
-    "@open-web3/orml-type-definitions" "^0.9.2-0"
+    "@open-web3/orml-type-definitions" "0.9.4-3"
 
-"@open-web3/scanner@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/scanner/-/scanner-0.9.2-0.tgz#92fefe498e91be7e9d03f4227e60db78b94969dd"
-  integrity sha512-V+8eZY5mDmJT655AU4HOIyEw0GIorlpvVchwAW6jQAQ52tsQNBTP8167IbFIpzdMbNHL9U/ry1r2yUYFylpiZw==
+"@open-web3/scanner@0.9.4-3":
+  version "0.9.4-3"
+  resolved "https://registry.yarnpkg.com/@open-web3/scanner/-/scanner-0.9.4-3.tgz#e84fca3e3cf666b4f12174249629d1644d36cef0"
+  integrity sha512-bItuVKEEMPMyGb3ufvTiw08+rKp4GaAaMcSPV0qrFaNS3FcSZEoaMsTo4D0dvdooYGpK38zx4fktSQXfSepFKg==
 
 "@open-web3/util@0.9.4-3", "@open-web3/util@^0.9.4-3":
   version "0.9.4-3"
   resolved "https://registry.yarnpkg.com/@open-web3/util/-/util-0.9.4-3.tgz#f8072ac152e1519545d463acd118e42a885fca42"
   integrity sha512-I6uTmtXDkIftUkXEwAC3UwojGWlTFr1tYskPBPmZLK3Msq+o3zoPIOq/x5kSK6ajQEsnEDqkFd9pmaX2Pocz7w==
-  dependencies:
-    "@yarnpkg/lockfile" "^1.1.0"
-    big.js "^5.2.2"
-
-"@open-web3/util@^0.9.2-0":
-  version "0.9.2-0"
-  resolved "https://registry.yarnpkg.com/@open-web3/util/-/util-0.9.2-0.tgz#f3b61922f2af40349f5119031db65511d7a7d6e8"
-  integrity sha512-Bifi8UwCpmKj+A8Qa3fF6QIZYb6kwZwhdjOqdu1wxRfTZnsq8n61V5gRsBzsap8r+soNVGtJBH2Y6s+XR3Z1yA==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     big.js "^5.2.2"
