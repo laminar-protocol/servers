@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Indexer from '@open-web3/indexer';
 import dotenv from 'dotenv';
 import { options } from '@laminar/api';
