@@ -2,7 +2,7 @@ import { CombinedFetcher, CCXTFetcher, CryptoCompareFetcher, FetcherInterface } 
 import config from './config';
 
 const CURRENCIES: { [key: string]: string[] } = {
-  BTC: ['XBTC', 'RENBTC']
+  BTC: ['RENBTC']
 };
 
 const createFetcher = (exchange: string): FetcherInterface => {
