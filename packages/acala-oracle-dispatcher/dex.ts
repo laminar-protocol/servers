@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import BigNumber from 'big.js';
 import { ApiManager } from '@open-web3/api';
 import { defaultLogger, HeartbeatGroup } from '@open-web3/util';

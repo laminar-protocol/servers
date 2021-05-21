@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { options } from '@acala-network/api';
 import { builder, onInterval, createEvent, onEvent } from '@open-web3/dispatcher';
 import { ApiManager } from '@open-web3/api';

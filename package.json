@@ -9,11 +9,13 @@
   ],
   "resolutions": {
     "@polkadot/api": "^4.5.1",
-    "@open-web3/api-mobx": "^0.9.2-0",
-    "@open-web3/orml-api-derive": "^0.9.2-0",
-    "@open-web3/orml-type-definitions": "^0.9.2-0",
-    "@open-web3/orml-types": "^0.9.2-0",
-    "@polkadot/typegen": "^4.5.1"
+    "@open-web3/api-mobx": "^0.9.4-3",
+    "@open-web3/orml-api-derive": "^0.9.4-3",
+    "@open-web3/orml-type-definitions": "^0.9.4-3",
+    "@open-web3/orml-types": "^0.9.4-3",
+    "@polkadot/typegen": "^4.5.1",
+    "**/@typescript-eslint/eslint-plugin": "^4.1.1",
+    "**/@typescript-eslint/parser": "^4.1.1"
   },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx . && tsc --noEmit --pretty",
@@ -26,15 +28,15 @@
     "@babel/core": "^7.8.4",
     "@babel/register": "^7.8.3",
     "@babel/runtime": "^7.8.4",
-    "@open-web3/util": "^0.9.2-0",
+    "@open-web3/util": "^0.9.4-3",
     "@polkadot/dev": "^0.32.17",
     "@polkadot/ts": "^0.2.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "prettier": "^2.0.1",
     "pretty-quick": "^2.0.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.3"
+    "ts-node": "^9.0.0",
+    "typescript": "^4.2.4"
   },
   "husky": {
     "hooks": {
